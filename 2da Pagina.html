@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ducky Web</title>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <style>
+
+        body {
+            background: linear-gradient(#A9D0F5, #58ACFA);
+        }
+
+        div {
+            border: 2px solid;
+            padding: 15px;
+            margin: 20px;
+        }
+
+        #logo{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+        #Input{
+            width: 300px;
+            float: left;
+            font-family: 'Amatic SC', cursive;
+            font-weight: bold;
+        }
+        #Selector{
+            width: 200px;
+            float: inherit;
+        }
+        #Botonera{
+            border: none;
+            float: inherit;
+        }
+        #Boton{
+            background: blanchedalmond;
+            border: 2px solid;
+            border-radius: 150px;
+            padding: 15px;
+            cursor: pointer;
+        }
+        #Boton:hover {
+            width: 100px;
+            height: 80px;
+        }
+        #Aside{
+            margin-left: 500px;
+        }
+        #Graf{
+            width: 500px;
+            height: 400px;
+            text-align: center;
+        }
+        #Resultados{
+            width: 500px;
+            height: 100px;
+            font-family: 'Amatic SC', cursive;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+<div id="logo">
+    logo
+</div>
+<div id="Input">
+    Calcular:
+    <div id="Selector">
+        <input type="checkbox" name="Incognita" value="Area"> Área<br>
+        <input type="checkbox" name="Incognita" value="Altura"> Altura<br>
+        <input type="checkbox" name="Incognita" value="Masa"> Masa
+    </div>
+    <br>
+    Datos:<br>
+    Área 1: <input type="number" name="Area1">
+    <select name="unidadesa1">
+        <option value="m2">m<sup>2</sup></option>
+        <option value="cm2">cm<sup>2</sup></option>
+
+    </select><br>
+    Área 2: <input type="number" name="Area2">
+    <select name="unidadesa2">
+        <option value="m2">m<sup>2</sup></option>
+        <option value="cm2">cm<sup>2</sup></option>
+
+    </select><br>
+    Altura 1: <input type="number" name="Altura1">
+    <select name="unidadesalt1">
+        <option value="m">m</option>
+        <option value="cm">cm></option>
+
+    </select><br>
+    Altura 2: <input type="number" name="Altura2">
+    <select name="unidadesalt2">
+        <option value="m">m</option>
+        <option value="cm">cm</option>
+
+    </select><br>
+    Masa 1: <input type="number" name="Masa1">
+    <select name="unidadesm1">
+        <option value=kg>kg</option>
+        <option value="g">g></option>
+
+    </select><br>
+    Masa 2: <input type="number" name="Masa2">
+    <select name="unidadesm2">
+        <option value="kg">kg</option>
+        <option value="g">g></option>
+
+    </select><br>
+
+    <div id="Botonera">
+        <button id="Boton" type="button">Reset</button>
+        <button id="Boton" type="button">Random</button>
+    </div>
+
+</div>
+
+<div id="Aside">
+    <div id="Graf">
+        grafico
+    </div>
+    <div id="Resultados">
+        Resultados:
+    </div>
+</div>
+</body>
+</html>
