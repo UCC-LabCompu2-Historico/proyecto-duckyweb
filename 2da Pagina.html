@@ -6,78 +6,90 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css" type="text/css">
 </head>
+
 <body>
 <div id="logo">
     logo
 </div>
+
 <div id="Capsula">
-    <div id="Input">
-        Calcular:
-        <div id="Selector">
-            <input type="checkbox" name="Incognita" value="Area"> Área<br>
-            <input type="checkbox" name="Incognita" value="Altura"> Altura<br>
-            <input type="checkbox" name="Incognita" value="Masa"> Masa
-        </div>
-        <br>
-        Datos:<br>
-        Área 1: <input type="number" name="Area1">
-        <select name="unidadesa1">
-            <option value="m2">m<sup>2</sup></option>
-            <option value="cm2">cm<sup>2</sup></option>
 
-        </select><br>
-        Área 2: <input type="number" name="Area2">
-        <select name="unidadesa2">
-            <option value="m2">m<sup>2</sup></option>
-            <option value="cm2">cm<sup>2</sup></option>
-
-        </select><br>
-        Altura 1: <input type="number" name="Altura1">
-        <select name="unidadesalt1">
-            <option value="m">m</option>
-            <option value="cm">cm</option>
-
-        </select><br>
-        Altura 2: <input type="number" name="Altura2">
-        <select name="unidadesalt2">
-            <option value="m">m</option>
-            <option value="cm">cm</option>
-
-        </select><br>
-        Masa 1: <input type="number" name="Masa1">
-        <select name="unidadesm1">
-            <option value=kg>kg</option>
-            <option value="g">g</option>
-
-        </select><br>
-        Masa 2: <input type="number" name="Masa2">
-        <select name="unidadesm2">
-            <option value="kg">kg</option>
-            <option value="g">g</option>
-
-        </select><br>
-
-        <div id="Botonera">
-            <button id="Boton" type="button">Calcular</button>
-            <button id="Boton" type="button">Reset</button>
-            <button id="Boton" type="button">Random</button>
-        </div>
-
+<div id="aside">
+    Calcular:
+    <div id="Selector" class="input">
+        <input type="radio" name="Incognita" value="Area" id="area" checked="">
+        <label for="area">Área</label> <br>
+        <input type="radio" name="Incognita" value="Altura" id="altura"> Altura<br>
+        <label for=""></label>
+        <input type="radio" name="Incognita" value="Masa"> Masa
+        <label for=""></label>
     </div>
 
-    <button id="Boton" type="button"> Volver </button>
 
+    <div id="formulario" class="input">
+    Datos:<br>
+    <label for="area1">Área 1:</label>
+    <input type="number" name="Area1" min="0" id="area1">
+    <select name="unidadesa1">
+        <option value="m2">m<sup>2</sup></option>
+        <option value="cm2">cm<sup>2</sup></option>
 
-    <div id="Graf">
-        <button id="Boton"  class="Repite type="reset">Repite</button>
-        grafico
+    </select><br>
+    Área 2: <input type="number" name="Area2" min="0">
+    <select name="unidadesa2">
+        <option value="m2">m<sup>2</sup></option>
+        <option value="cm2">cm<sup>2</sup></option>
+
+    </select><br>
+    <label for="altura1">Altura 1:</label>
+    <input type="number" name="Altura1" min="0" id="altura1">
+    <select name="unidadesalt1">
+        <option value="m">m</option>
+        <option value="cm">cm</option>
+
+    </select><br>
+    Altura 2: <input type="number" name="Altura2" min="0">
+    <select name="unidadesalt2">
+        <option value="m">m</option>
+        <option value="cm">cm</option>
+
+    </select><br>
+    Masa 1: <input type="number" name="Masa1" min="0">
+    <select name="unidadesm1">
+        <option value=kg>kg</option>
+        <option value="g">g</option>
+
+    </select><br>
+    Masa 2: <input type="number" name="Masa2" min="0">
+    <select name="unidadesm2">
+        <option value="kg">kg</option>
+        <option value="g">g</option>
+
+    </select>
     </div>
 
-    <div id="Resultados"">
-        Resultados:
+    <div id="Botonera" class="input">
+        <button id="Boton" type="button">Calcular</button>
+        <button id="Boton" type="button">Reset</button>
+        <button id="Boton" type="button">Random</button>
     </div>
-
 
 </div>
+
+
+
+<div id="Graf">
+    <button id="Boton" class="Repite type=" reset">Repite</button>
+    grafico
+</div>
+
+<div id="Resultados"">
+Resultados:
+</div>
+
+</div>
+
+<a class="volver" id="Boton" type="button" href="index.html"> Volver </a>
+
 </body>
 </html>

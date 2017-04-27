@@ -1,11 +1,12 @@
 body {
-    background: linear-gradient(#A9D0F5, #58ACFA);
+    background: linear-gradient(to right, #A9D0F5, #58ACFA);
 }
 
 div {
     border: 2px solid;
     padding: 15px;
     margin: 20px;
+    border-color: red
 }
 
 #logo{
@@ -16,7 +17,7 @@ div {
 }
 
 #Capsula{
-    border: none;
+    border: solid;
 }
 
 .inicio {
@@ -49,21 +50,31 @@ div {
 }
 
 
-
-#Input{
-    width: 300px;
+#aside{
+    width: 20vw;
     float: left;
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
+    padding: 0;
+}
+
+#formulario{
+
 }
 #Selector{
-    width: 200px;
-    float: inherit;
+
 }
 #Botonera{
-    border: none;
-    float: inherit;
+
 }
+.input{
+    width: 16vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+
+}
+
+
 #Boton{
     background: blanchedalmond;
     border: 2px solid;
@@ -80,23 +91,27 @@ div {
 }
 
 #Graf{
-    width: 500px;
     height: 400px;
     text-align: center;
-    margin-left: 500px;
+    min-width: 600px;
 }
 #Resultados{
-    width: 500px;
     height: 100px;
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
-    margin-left: 500px;
+}
+
+#Graf, #Resultados {
+    width: 60vw;
+    min-width: 500px;
+    margin-left: 30vw;
 }
 
 .Repite{
     position: relative;
-    top: -20%;
-    right: -50%;
+    top: 0vh;
+    right: -4.8vw;
+    float: right;
 }
 
 a {
@@ -108,4 +123,13 @@ a {
 a:hover {
     width: 100px;
     height: 80px;
+}
+
+.volver{
+    margin-left: 20px;
+}
+
+label{
+    width: 25%;
+    float: left;
 }
