@@ -2,4 +2,16 @@ Tareas
 
 *Agregar labels a todo
 *Diseñar logos
+*Escribir todo con minúscula
+*CSS letras	
+*Margin .input
+*Espaciado vertical labels
+*Classes e ides
+
+
+
+
+Tener en cuenta (profes no leer)	
+~ font-family para segunda pagina
+~ modificar transición 
 
