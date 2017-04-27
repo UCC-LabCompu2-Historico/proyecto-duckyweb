@@ -1,0 +1,101 @@
+body {
+    background: linear-gradient(#A9D0F5, #58ACFA);
+}
+
+div {
+    border: 2px solid;
+    padding: 15px;
+    margin: 20px;
+}
+
+#logo{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+
+}
+
+#Capsula{
+    border: none;
+}
+
+.inicio {
+    border: none;
+    text-align: center;
+    font-size: x-large;
+    width: 100px;
+    height: 100px;
+    margin-top: 100px;
+    margin-left: 45%;
+
+
+}
+
+.inicio:hover {
+    width: 150px;
+    height: 150px;
+}
+
+.titulo {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 200px;
+    margin-bottom: 100px;
+
+
+}
+
+
+
+#Input{
+    width: 300px;
+    float: left;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+}
+#Selector{
+    width: 200px;
+    float: inherit;
+}
+#Botonera{
+    border: none;
+    float: inherit;
+}
+#Boton{
+    background: blanchedalmond;
+    border: 2px solid;
+    border-radius: 150px;
+    padding: 15px;
+    cursor: pointer;
+    transition: width 2.5s, height 2.5s;
+    transition-timing-function: ease-in-out;
+}
+#Boton:hover {
+    width: 100px;
+    height: 80px;
+}
+
+#Graf{
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    margin-left: 500px;
+}
+#Resultados{
+    width: 500px;
+    height: 100px;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    margin-left: 500px;
+}
+
+.Repite{
+    position: relative;
+    top: -20%;
+    right: -50%;
+}
