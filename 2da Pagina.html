@@ -15,63 +15,71 @@
 <div id="Capsula">
 
 <div id="aside">
-    Calcular:
     <div id="Selector" class="input">
-        <input type="radio" name="Incognita" value="Area" id="area" checked="">
-        <label for="area">Área</label> <br>
-        <input type="radio" name="Incognita" value="Altura" id="altura"> Altura<br>
-        <label for=""></label>
-        <input type="radio" name="Incognita" value="Masa"> Masa
-        <label for=""></label>
+        <u>Calcular:</u><br>
+        <label for="area">Área</label>
+        <input type="radio" name="Incognita" value="Area" id="area" checked=""> <br>
+        <label for="altura">Altura</label>
+        <input type="radio" name="Incognita" value="Altura" id="altura"> <br>
+        <label for="masa">Masa</label>
+        <input type="radio" name="Incognita" value="Masa" id="masa">
+
     </div>
 
 
     <div id="formulario" class="input">
-    Datos:<br>
+
+    <u>Datos:</u><br>
+
     <label for="area1">Área 1:</label>
     <input type="number" name="Area1" min="0" id="area1">
-    <select name="unidadesa1">
+    <select name="unidadesa1" id="area1">
         <option value="m2">m<sup>2</sup></option>
         <option value="cm2">cm<sup>2</sup></option>
-
     </select><br>
-    Área 2: <input type="number" name="Area2" min="0">
-    <select name="unidadesa2">
+
+    <label for="area2">Área 2:</label>
+    <input type="number" name="Area2" min="0" id="area2">
+    <select name="unidadesa2" id="area2">
         <option value="m2">m<sup>2</sup></option>
         <option value="cm2">cm<sup>2</sup></option>
-
     </select><br>
+
     <label for="altura1">Altura 1:</label>
     <input type="number" name="Altura1" min="0" id="altura1">
-    <select name="unidadesalt1">
+    <select name="unidadesalt1" id="altura1">
         <option value="m">m</option>
         <option value="cm">cm</option>
-
     </select><br>
-    Altura 2: <input type="number" name="Altura2" min="0">
-    <select name="unidadesalt2">
+
+    <label for="altura2">Altura 2:</label>
+    <input type="number" name="Altura2" min="0" id="altura2">
+    <select name="unidadesalt2" id="altura2">
         <option value="m">m</option>
         <option value="cm">cm</option>
-
     </select><br>
-    Masa 1: <input type="number" name="Masa1" min="0">
-    <select name="unidadesm1">
+
+    <label for="masa1">Masa 1:</label>
+    <input type="number" name="Masa1" min="0" id="masa1">
+    <select name="unidadesm1" id="masa1">
         <option value=kg>kg</option>
         <option value="g">g</option>
-
     </select><br>
-    Masa 2: <input type="number" name="Masa2" min="0">
-    <select name="unidadesm2">
+
+    <label for="masa2">Masa 2:</label>
+    <input type="number" name="Masa2" min="0" id="masa2">
+    <select name="unidadesm2" id="masa2">
         <option value="kg">kg</option>
         <option value="g">g</option>
-
     </select>
+
+
     </div>
 
     <div id="Botonera" class="input">
-        <button id="Boton" type="button">Calcular</button>
-        <button id="Boton" type="button">Reset</button>
-        <button id="Boton" type="button">Random</button>
+        <button class="Boton" type="button">Calcular</button>
+        <button class="Boton" type="button">Reset</button>
+        <button class="Boton" type="button">Random</button>
     </div>
 
 </div>
@@ -79,7 +87,7 @@
 
 
 <div id="Graf">
-    <button id="Boton" class="Repite type=" reset">Repite</button>
+    <button class="Boton" id="Repite" type="button">Repite</button>
     grafico
 </div>
 
@@ -89,7 +97,7 @@ Resultados:
 
 </div>
 
-<a class="volver" id="Boton" type="button" href="index.html"> Volver </a>
+<a id="volver" type="button" href="index.html"> Volver </a>
 
 </body>
 </html>

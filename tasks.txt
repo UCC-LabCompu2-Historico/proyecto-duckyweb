@@ -7,6 +7,7 @@ Tareas
 *Margin .input
 *Espaciado vertical labels
 *Classes e ides
+*Metas
 
 
 
@@ -14,4 +15,8 @@ Tareas
 Tener en cuenta (profes no leer)	
 ~ font-family para segunda pagina
 ~ modificar transición 
+~ color de botones
 
+
+Consultas
+- supra en los select

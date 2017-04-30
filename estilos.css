@@ -1,12 +1,15 @@
 body {
     background: linear-gradient(to right, #A9D0F5, #58ACFA);
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size: 3ex;
 }
 
 div {
     border: 2px solid;
     padding: 15px;
     margin: 20px;
-    border-color: red
+    border-color: red;
 }
 
 #logo{
@@ -16,66 +19,85 @@ div {
 
 }
 
-#Capsula{
-    border: solid;
-}
-
-.inicio {
-    border: none;
+#titulo {
     text-align: center;
-    font-size: x-large;
-    width: 100px;
-    height: 100px;
-    margin-top: 100px;
-    margin-left: 45%;
-}
-
-.inicio:hover {
-    width: 150px;
-    height: 150px;
-}
-
-.titulo {
-    text-align: center;
-    font-family: 'Amatic SC', cursive;
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 5ex;
     width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 200px;
     margin-bottom: 100px;
-
-
 }
 
+#inicio {
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transition: width 1s ease, height 1s ease, background-color 2s ease, border-radius 2s ease, padding 1s ease, box-shadow 1s ease 2s, color 3s linear;
+}
+
+#inicio:hover {
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #D0D3D4;
+    padding:30px;
+    box-shadow:0 2px 20px #000;
+}
+
+#link1{
+    line-height: 50px;
+    font-size: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+#Capsula{
+    border: solid;
+    width: 100vw;
+    height: 70vh;
+}
 
 #aside{
     width: 20vw;
+    height: 60vh;
     float: left;
-    font-family: 'Amatic SC', cursive;
-    font-weight: bold;
     padding: 0;
 }
 
+#selector{
+
+}
 #formulario{
 
-}
-#Selector{
+ }
+#botonera{
 
 }
-#Botonera{
 
-}
 .input{
     width: 16vw;
-    margin-left: 2vw;
-    margin-right: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+button{
+    margin-left: 15px;
 }
 
 
-#Boton{
+.Boton{
     background: blanchedalmond;
     border: 2px solid;
     border-radius: 150px;
@@ -85,7 +107,7 @@ div {
     transition: width 2.5s, height 2.5s;
     transition-timing-function: ease-in-out;
 }
-#Boton:hover {
+.Boton:hover {
     width: 100px;
     height: 80px;
 }
@@ -97,8 +119,6 @@ div {
 }
 #Resultados{
     height: 100px;
-    font-family: 'Amatic SC', cursive;
-    font-weight: bold;
 }
 
 #Graf, #Resultados {
@@ -107,14 +127,14 @@ div {
     margin-left: 30vw;
 }
 
-.Repite{
+#Repite{
     position: relative;
     top: 0vh;
     right: -4.8vw;
     float: right;
 }
 
-a {
+a{
     color: black;
     transition: width 2.5s, height 2.5s;
     transition-timing-function: ease-in-out;
@@ -125,7 +145,7 @@ a:hover {
     height: 80px;
 }
 
-.volver{
+#volver{
     margin-left: 20px;
 }
 
