@@ -2,41 +2,43 @@ body {
     background: linear-gradient(to right, #A9D0F5, #58ACFA);
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
-    font-size: 3ex;
+    font-size: 4ex;
 }
 
 div {
     border: 2px solid;
     padding: 15px;
     margin: 20px;
-    border-color: red;
 }
 
-#logo{
-    width: 100px;
-    height: 100px;
-    text-align: center;
+a {
+    color: black;
+    text-decoration: none;
+}
 
+#logo {
+    width: 100px;
+    border: none;
+}
+
+#titulo, #inicio {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #titulo {
-    text-align: center;
     font-size: 5ex;
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 200px;
     margin-bottom: 100px;
 }
 
 #inicio {
-    text-align: center;
     width: 100px;
     height: 50px;
     border-radius: 100px;
     margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
     -webkit-transition: width 1s ease, height 1s ease, background-color 2s ease, border-radius 2s ease, padding 1s ease, box-shadow 1s ease 2s, color 3s linear;
 }
 
@@ -45,111 +47,92 @@ div {
     height: 100px;
     border-radius: 10px;
     background-color: #D0D3D4;
-    padding:30px;
-    box-shadow:0 2px 20px #000;
+    padding: 30px;
+    box-shadow: 0 2px 20px #000;
 }
 
-#link1{
+#link1 {
     line-height: 50px;
     font-size: 2em;
 }
 
-
-
-
-
-
-
-
-
-
-#Capsula{
-    border: solid;
-    width: 100vw;
+#Capsula {
+    border: none;
+    width: 95vmax;
     height: 70vh;
 }
 
-#aside{
-    width: 20vw;
-    height: 60vh;
+#aside {
     float: left;
     padding: 0;
+    border: none;
 }
 
-#selector{
-
-}
-#formulario{
-
- }
-#botonera{
-
+.input {
+    min-width: 16vw;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
-.input{
-    width: 16vw;
-    margin-left: auto;
-    margin-right: auto;
+label {
+    width: 25%;
+    float: left;
 }
 
-button{
+#botonera {
+    border: none;
+}
+
+select {
+    font: inherit;
+    font-size: 1ex;
+}
+
+button {
     margin-left: 15px;
 }
 
-
-.Boton{
+.Boton {
     background: blanchedalmond;
+    width: 4em;
+    height: 3em;
     border: 2px solid;
     border-radius: 150px;
-    padding: 15px;
     cursor: pointer;
-    text-align: center;
-    transition: width 2.5s, height 2.5s;
-    transition-timing-function: ease-in-out;
-}
-.Boton:hover {
-    width: 100px;
-    height: 80px;
+    transition: width 1s cubic-bezier(0.18, 0.89, 0.32, 1.28), height 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    font: inherit;
+    font-size: 20px;
 }
 
-#Graf{
+.Boton:hover {
+    width: 4.5em;
+    height: 3.5em;
+}
+
+#Graf {
     height: 400px;
     text-align: center;
-    min-width: 600px;
 }
-#Resultados{
+
+#Resultados {
     height: 100px;
 }
 
 #Graf, #Resultados {
     width: 60vw;
-    min-width: 500px;
     margin-left: 30vw;
 }
 
-#Repite{
-    position: relative;
-    top: 0vh;
-    right: -4.8vw;
+#Repite {
+    position: absolute;
+    top: 20vh;
+    right: 1vw;
     float: right;
 }
 
-a{
-    color: black;
-    transition: width 2.5s, height 2.5s;
-    transition-timing-function: ease-in-out;
-}
-
-a:hover {
-    width: 100px;
-    height: 80px;
-}
-
-#volver{
+#volver {
     margin-left: 20px;
+    bottom: 20px;
+    position: fixed;
 }
 
-label{
-    width: 25%;
-    float: left;
-}
