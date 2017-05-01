@@ -56,7 +56,7 @@ a {
     font-size: 2em;
 }
 
-#Capsula {
+#capsula {
     border: none;
     width: 95vmax;
     height: 70vh;
@@ -92,7 +92,7 @@ button {
     margin-left: 15px;
 }
 
-.Boton {
+.boton {
     background: blanchedalmond;
     width: 4em;
     height: 3em;
@@ -104,26 +104,26 @@ button {
     font-size: 20px;
 }
 
-.Boton:hover {
+.boton:hover {
     width: 4.5em;
     height: 3.5em;
 }
 
-#Graf {
+#graf {
     height: 400px;
     text-align: center;
 }
 
-#Resultados {
+#resultados {
     height: 100px;
 }
 
-#Graf, #Resultados {
+#graf, #resultados {
     width: 60vw;
     margin-left: 30vw;
 }
 
-#Repite {
+#repite {
     position: absolute;
     top: 20vh;
     right: 1vw;
