@@ -69,16 +69,21 @@ a {
     border: none;
 }
 
-.input {
+#aside div {
     min-width: 16vw;
     margin-left: 30px;
     margin-right: 30px;
 }
 
-.input input{
+#aside input {
     width: 120px;
+}
+
+#aside select, input {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px;
     vertical-align: middle;
-    font-size: 28px;
+    font-weight: 600;
 }
 
 label {
@@ -86,26 +91,17 @@ label {
     float: left;
 }
 
-p{
-    line-height: 1em;
-    -webkit-margin-before: 0.5em;
-    -webkit-margin-after: 0.5em;
+p {
+    margin: 0;
+    line-height: 2em;
 }
 
 #botonera {
     border: none;
 }
 
-select {
-    font: inherit;
-    font-size: 28px;
-}
-
-button {
-    margin-left: 15px;
-}
-
 .boton {
+    margin-left: 15px;
     background: blanchedalmond;
     width: 4em;
     height: 3em;
@@ -136,6 +132,14 @@ button {
     margin-left: 30vw;
 }
 
+#mycanvas {
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+    margin-left: 30vw;
+    padding: 15px;
+}
+
 #repite {
     position: absolute;
     top: 20vh;
@@ -145,7 +149,5 @@ button {
 
 #volver {
     margin-left: 20px;
-    bottom: 20px;
-    position: fixed;
 }
 

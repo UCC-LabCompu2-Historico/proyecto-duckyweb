@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Ducky Web</title>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css" type="text/css">
     <link rel="shortcut icon" href="images/pato_solito.png">
     <meta name="description" content="Resolucion de problemas de Prensa Hidroestatica">
@@ -22,7 +23,7 @@
 
     <div id="aside">
 
-        <div class="input">
+        <div>
 
             <u>Calcular:</u><br>
             <label for="area">Área</label>
@@ -34,7 +35,7 @@
 
         </div>
 
-        <div class="input">
+        <div>
 
             <u>Datos:</u>
             <p>
@@ -88,17 +89,23 @@
 
         </div>
 
-        <div id="botonera" class="input">
+        <div id="botonera">
             <button class="boton" type="button">Calcular</button>
             <button class="boton" type="button">Reset</button>
             <button class="boton" type="button">Random</button>
         </div>
 
+        <a id="volver" type="button" href="index.html">Volver</a>
+
     </div>
 
     <div id="graf">
         Gráfico
+        <canvas id="mycanvas">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
     </div>
+
 
     <div id="resultados">
         Resultados:
@@ -107,8 +114,6 @@
     <button class="boton" id="repite" type="button">Repetir</button>
 
 </div>
-
-<a id="volver" type="button" href="index.html"> Volver </a>
 
 </body>
 </html>
