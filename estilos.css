@@ -19,6 +19,7 @@ a {
 #logo {
     width: 100px;
     border: none;
+    text-align: center;
 }
 
 #titulo, #inicio {
@@ -74,9 +75,21 @@ a {
     margin-right: 30px;
 }
 
+.input input{
+    width: 120px;
+    vertical-align: middle;
+    font-size: 28px;
+}
+
 label {
-    width: 25%;
+    width: 35%;
     float: left;
+}
+
+p{
+    line-height: 1em;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
 }
 
 #botonera {
@@ -85,7 +98,7 @@ label {
 
 select {
     font: inherit;
-    font-size: 1ex;
+    font-size: 28px;
 }
 
 button {
