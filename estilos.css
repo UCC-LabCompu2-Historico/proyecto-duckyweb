@@ -70,7 +70,7 @@ a {
 }
 
 #aside div {
-    min-width: 16vw;
+    width: 350px;
     margin-left: 30px;
     margin-right: 30px;
 }
@@ -122,26 +122,27 @@ p {
     height: 3.5em;
 }
 
+.columna {
+    width: 60%;
+    margin-left: 30vw;
+    padding: 0;
+}
+
 #graf {
     height: 400px;
     text-align: center;
+    border: none;
+}
+
+#mycanvas {
+    border: 2px solid;
+    margin: 0;
+    height: 100%;
+    width: 100%;
 }
 
 #resultados {
     height: 100px;
-}
-
-#graf, #resultados {
-    width: 60vw;
-    margin-left: 30vw;
-}
-
-#mycanvas {
-    width: 20px;
-    height: 20px;
-    border: 2px solid;
-    margin-left: 30vw;
-    padding: 15px;
 }
 
 #repite {
