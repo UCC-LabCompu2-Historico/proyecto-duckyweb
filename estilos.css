@@ -8,7 +8,7 @@ body {
 div {
     border: 2px solid;
     padding: 15px;
-    margin: 20px;
+    margin-bottom: 50px;
 }
 
 a {
@@ -59,8 +59,10 @@ a {
 
 #capsula {
     border: none;
-    width: 95vmax;
+    width: 92vmax;
     height: 70vh;
+    position: absolute;
+    left: 75px;
 }
 
 #aside {
@@ -71,8 +73,6 @@ a {
 
 #aside div {
     width: 350px;
-    margin-left: 30px;
-    margin-right: 30px;
 }
 
 #aside input {
@@ -102,10 +102,10 @@ p {
 
 #botonera {
     border: none;
+    text-align: center;
 }
 
 .boton {
-    margin-left: 15px;
     background: blanchedalmond;
     width: 4em;
     height: 3em;
@@ -115,6 +115,9 @@ p {
     transition: width 1s cubic-bezier(0.18, 0.89, 0.32, 1.28), height 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     font: inherit;
     font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+
 }
 
 .boton:hover {
@@ -124,14 +127,15 @@ p {
 
 .columna {
     width: 60%;
-    margin-left: 30vw;
     padding: 0;
+    position: relative;
+    left: 500px;
 }
 
 #graf {
-    height: 400px;
+    height: 435px;
     text-align: center;
-    border: none;
+    border: 0;
 }
 
 #mycanvas {
@@ -139,10 +143,12 @@ p {
     margin: 0;
     height: 100%;
     width: 100%;
+    position: absolute;
+    left: 0;
 }
 
 #resultados {
-    height: 100px;
+    height: 150px;
 }
 
 #repite {
@@ -153,6 +159,4 @@ p {
 }
 
 #volver {
-    margin-left: 20px;
 }
-
