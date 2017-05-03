@@ -79,6 +79,10 @@ a {
     width: 120px;
 }
 
+input[type=radio] {
+    height: 25px;
+}
+
 #aside select, input {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 24px;
