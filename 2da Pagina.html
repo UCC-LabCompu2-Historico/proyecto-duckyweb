@@ -15,7 +15,7 @@
 <body>
 
 <div id="logo">
-    <img src="images/pato_solito.png" id="logo">
+    <img src="images/pato_solito.png" alt="">
     <br>Prensa Hidroestática
 </div>
 
@@ -41,23 +41,29 @@
             <p>
                 <label for="area1">Área 1:</label>
                 <input type="number" name="Area1" min="0" id="area1">
-                <select name="unidadesa1" id="area1">
-                    <option value="m2">m&sup2</option>
-                    <option value="cm2">cm&sup2</option>
+                <select name="unidadesa1" id="unidadesa1">
+                    <option value="m2">
+						m2
+					</option>
+                    <option value="cm2">
+						cm2
+					</option>
                 </select>
             </p>
             <p>
                 <label for="area2">Área 2:</label>
                 <input type="number" name="Area2" min="0" id="area2">
-                <select name="unidadesa2" id="area2">
-                    <option value="m2">m&sup2</option>
-                    <option value="cm2">cm&sup2</option>
+                <select name="unidadesa2" id="unidadesa2">
+                    <option value="m2">m2</option>
+                    <option value="cm2">
+						cm2
+					</option>
                 </select>
             </p>
             <p>
                 <label for="altura1">Altura 1:</label>
                 <input type="number" name="Altura1" min="0" id="altura1">
-                <select name="unidadesalt1" id="altura1">
+                <select name="unidadesalt1" id="unidadesalt1">
                     <option value="m">m</option>
                     <option value="cm">cm</option>
                 </select>
@@ -65,7 +71,7 @@
             <p>
                 <label for="altura2">Altura 2:</label>
                 <input type="number" name="Altura2" min="0" id="altura2">
-                <select name="unidadesalt2" id="altura2">
+                <select name="unidadesalt2" id="unidadesalt2">
                     <option value="m">m</option>
                     <option value="cm">cm</option>
                 </select>
@@ -73,7 +79,7 @@
             <p>
                 <label for="masa1">Masa 1:</label>
                 <input type="number" name="Masa1" min="0" id="masa1">
-                <select name="unidadesm1" id="masa1">
+                <select name="unidadesm1" id="unidadesm1">
                     <option value=kg>kg</option>
                     <option value="g">g</option>
                 </select>
@@ -81,7 +87,7 @@
             <p>
                 <label for="masa2">Masa 2:</label>
                 <input type="number" name="Masa2" min="0" id="masa2">
-                <select name="unidadesm2" id="masa2">
+                <select name="unidadesm2" id="unidadesm2">
                     <option value="kg">kg</option>
                     <option value="g">g</option>
                 </select>
@@ -95,7 +101,7 @@
             <button class="boton" type="button">Random</button>
         </div>
 
-        <a id="volver" type="button" href="index.html">⇠ Volver</a>
+        <a id="volver" href="index.html">⇠ Volver</a>
 
     </div>
 
@@ -111,8 +117,6 @@
 </div>
 
 <button class="boton" id="repite" type="button">Repetir ↺</button>
-
-</div>
 
 </body>
 </html>
