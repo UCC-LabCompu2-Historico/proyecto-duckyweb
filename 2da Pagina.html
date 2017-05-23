@@ -10,9 +10,10 @@
     <meta name="description" content="Resolucion de problemas de Prensa Hidroestatica">
     <meta name="keywords" content="HTML,CSS">
     <meta name="author" content="Leandro Ruiz, Nelo Nanfara">
+    <script type="text/javascript" src="funciones.js"></script>
 </head>
 
-<body>
+<body onload="mostrarocultar('area')">
 
 <div id="logo">
     <img src="images/pato_solito.png" alt="">
@@ -27,40 +28,40 @@
 
             <u>Calcular:</u><br>
             <label for="area">Área</label>
-            <input type="radio" name="Incognita" value="Area" id="area" checked=""><br>
+            <input type="radio" name="incognita" value="Area" id="area" checked="" onchange="mostrarocultar(this.id)"><br>
             <label for="altura">Altura</label>
-            <input type="radio" name="Incognita" value="Altura" id="altura"><br>
+            <input type="radio" name="incognita" value="Altura" id="altura" onchange="mostrarocultar(this.id)"><br>
             <label for="masa">Masa</label>
-            <input type="radio" name="Incognita" value="Masa" id="masa">
+            <input type="radio" name="incognita" value="Masa" id="masa" onchange="mostrarocultar(this.id)">
 
         </div>
 
         <div>
 
             <u>Datos:</u>
-            <p>
+            <p id="p_a1">
                 <label for="area1">Área 1:</label>
                 <input type="number" name="Area1" min="0" id="area1">
                 <select name="unidadesa1" id="unidadesa1">
                     <option value="m2">
-						m2
-					</option>
+                        m2
+                    </option>
                     <option value="cm2">
-						cm2
-					</option>
+                        cm2
+                    </option>
                 </select>
             </p>
-            <p>
+            <p id="p_a2">
                 <label for="area2">Área 2:</label>
                 <input type="number" name="Area2" min="0" id="area2">
                 <select name="unidadesa2" id="unidadesa2">
                     <option value="m2">m2</option>
                     <option value="cm2">
-						cm2
-					</option>
+                        cm2
+                    </option>
                 </select>
             </p>
-            <p>
+            <p id="p_h1">
                 <label for="altura1">Altura 1:</label>
                 <input type="number" name="Altura1" min="0" id="altura1">
                 <select name="unidadesalt1" id="unidadesalt1">
@@ -68,7 +69,7 @@
                     <option value="cm">cm</option>
                 </select>
             </p>
-            <p>
+            <p id="p_h2">
                 <label for="altura2">Altura 2:</label>
                 <input type="number" name="Altura2" min="0" id="altura2">
                 <select name="unidadesalt2" id="unidadesalt2">
@@ -76,7 +77,7 @@
                     <option value="cm">cm</option>
                 </select>
             </p>
-            <p>
+            <p id="p_m1">
                 <label for="masa1">Masa 1:</label>
                 <input type="number" name="Masa1" min="0" id="masa1">
                 <select name="unidadesm1" id="unidadesm1">
@@ -84,7 +85,7 @@
                     <option value="g">g</option>
                 </select>
             </p>
-            <p>
+            <p id="p_m2">
                 <label for="masa2">Masa 2:</label>
                 <input type="number" name="Masa2" min="0" id="masa2">
                 <select name="unidadesm2" id="unidadesm2">
@@ -96,7 +97,7 @@
         </div>
 
         <div id="botonera">
-            <button class="boton" type="button">Calcular</button>
+            <button class="boton" type="button" onclick="calculos()">Calcular</button>
             <button class="boton" type="button">Reset</button>
             <button class="boton" type="button">Random</button>
         </div>
@@ -113,6 +114,7 @@
 
     <div class="columna" id="resultados">
         Resultados:
+        <output id="prueba_resultado"></output>
     </div>
 </div>
 

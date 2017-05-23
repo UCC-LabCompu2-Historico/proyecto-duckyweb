@@ -1,8 +1,11 @@
 Tareas
-
+Reacomodar datosg
+Blanquear los datos
+convertir comas a puntos
+error para datos erronos
 
 Tener en cuenta (profes no leer)	
-cambiar tamanio de letra de los botones en segunda pag
+
 
 Consultas
 

@@ -1,0 +1,24 @@
+Conociendo Todo lo de un lado
+
+
+Caso 1:
+	Datos Masa 1, Altura 1, Area 1, Altura 2
+	Inc: Area 2 (Masa 2)
+
+Caso 2:
+	Datos: Masa 1, Altura 1, Area 1, Masa 2
+	Inc: Altura 2, (Area 2)		
+
+Caso 3:
+	Datos Masa 1, Altura 1, Area 1, Area 2
+	Inc: Masa 2, (Altura 2)
+
+
+
+
+
+
+
+
+
+https://es.stackoverflow.com/questions/1840/c%C3%B3mo-mostrar-resultados-en-un-input-mediante-javascript
