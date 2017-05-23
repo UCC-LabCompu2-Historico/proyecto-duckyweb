@@ -16,15 +16,13 @@ a {
     text-decoration: none;
 }
 
-#logo {
+#logo, #logo img {
     width: 100px;
     border: none;
     text-align: center;
 }
 
 #titulo, #inicio {
-    margin-right: auto;
-    margin-left: auto;
     text-align: center;
 }
 
@@ -39,8 +37,16 @@ a {
     width: 100px;
     height: 50px;
     margin-top: 100px;
+	margin-left: auto;
     border-radius: 100px;
-    -webkit-transition: width 1s ease, height 1s ease, background-color 2s ease, border-radius 2s ease, padding 1s ease, box-shadow 1s ease 2s, color 3s linear;
+    transition:
+		width 1s ease,
+		height 1s ease,
+		background-color 2s ease,
+		border-radius 2s ease,
+		padding 1s ease,
+		box-shadow 1s ease 2s,
+		color 3s linear;
 }
 
 #inicio:hover {
