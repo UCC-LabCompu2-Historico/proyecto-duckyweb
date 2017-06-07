@@ -3,6 +3,8 @@ Reacomodar datosg
 Blanquear los datos
 convertir comas a puntos
 error para datos erronos
+Cambiar el calculo de area
+Limitar opciones de entrada
 
 Tener en cuenta (profes no leer)	
 
