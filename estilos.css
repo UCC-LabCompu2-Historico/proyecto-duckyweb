@@ -37,16 +37,15 @@ a {
     width: 100px;
     height: 50px;
     margin-top: 100px;
-	margin-left: auto;
+    margin-left: auto;
     border-radius: 100px;
-    transition:
-		width 1s ease,
-		height 1s ease,
-		background-color 2s ease,
-		border-radius 2s ease,
-		padding 1s ease,
-		box-shadow 1s ease 2s,
-		color 3s linear;
+    transition: width 1s ease,
+    height 1s ease,
+    background-color 2s ease,
+    border-radius 2s ease,
+    padding 1s ease,
+    box-shadow 1s ease 2s,
+    color 3s linear;
 }
 
 #inicio:hover {
@@ -77,7 +76,7 @@ a {
     padding: 0;
 }
 
-#aside div{
+#aside div {
     width: 350px;
 }
 
@@ -133,7 +132,7 @@ p {
 .columna {
     position: relative;
     left: 500px;
-    width: 60%;
+    width: 900px;
     padding: 0;
 }
 
@@ -145,8 +144,8 @@ p {
 #mycanvas {
     position: absolute;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: inherit;
+    height: 440px;
     margin: 0;
     border: 2px solid;
 }
@@ -160,4 +159,3 @@ p {
     top: 20vh;
     right: 1vw;
     float: right;
-}
