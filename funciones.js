@@ -18,12 +18,14 @@
  *
  */
 
-var altura_1 = document.getElementById("altura1");
-var altura_2 = document.getElementById("altura2");
-var masa_1 = document.getElementById("masa1");
-var masa_2 = document.getElementById("");
-var area_1 = document.getElementById("area1");
-var area_2 = document.getElementById("");
+/*
+ var altura_1 = document.getElementById("altura1");
+ var altura_2 = document.getElementById("altura2");
+ var masa_1 = document.getElementById("masa1");
+ var masa_2 = document.getElementById("");
+ var area_1 = document.getElementById("area1");
+ var area_2 = document.getElementById("");
+ */
 
 // Objeto con constructor
 // var rueda = function ( d){
@@ -34,18 +36,17 @@ var area_2 = document.getElementById("");
 //   }
 // };
 
-var pepe = {
-    variable: "valor",
-    otravar: "otro valor",
-    otramas: 5,
-    funcion: function () {
-        console.log("esta es una funcion" + this.otramas);
-    },
-    otrafuncion: function () {
-        console.log("esta es otra funcion" + this.variable);
-    }
-};
-
+// var pepe = {
+//     variable: "valor",
+//     otravar: "otro valor",
+//     otramas: 5,
+//     funcion: function () {
+//         console.log("esta es una funcion" + this.otramas);
+//     },
+//     otrafuncion: function () {
+//         console.log("esta es otra funcion" + this.variable);
+//     }
+// };
 
 function mostrarocultar(incognita) {
     switch (incognita) {
@@ -91,54 +92,20 @@ function calculos() {
     if (document.getElementById("masa").checked)
         incognita = "masa";
 
-    var v1, v2, v3, u1, u2, u3;
-    var unidad_final;
-
     switch (incognita) {
         case "area":
-            v1 = document.getElementById("altura2").value;
-            v2 = document.getElementById("area1").value;
-            v3 = document.getElementById("altura1").value;
-
-            u1 = document.getElementById("unidadesalt2").value;
-            u2 = document.getElementById("unidadesa1").value;
-            u3 = document.getElementById("unidadesalt1").value;
-
-            unidad_final = "m2";
-
+            calcular_Area();
             break;
+
         case "altura":
-
-            v1 = document.getElementById("masa2").value;
-            v2 = document.getElementById("altura1").value;
-            v3 = document.getElementById("masa1").value;
-
-            u1 = document.getElementById("unidadesm2").value;
-            u2 = document.getElementById("unidadesalt1").value;
-            u3 = document.getElementById("unidadesm1").value;
-
-            unidad_final = "m";
-
+            calcular_Altura();
             break;
+
         case "masa":
-
-            v1 = document.getElementById("masa1").value;
-            v2 = document.getElementById("area2").value;
-            v3 = document.getElementById("area1").value;
-
-            u1 = document.getElementById("unidadesm1").value;
-            u2 = document.getElementById("unidadesa2").value;
-            u3 = document.getElementById("unidadesa1").value;
-
-            unidad_final = "kg";
-
+            calcular_Masa();
             break;
     }
-
-    document.getElementById("prueba_resultado").innerHTML = v1 * factor_conversion(u1) * v2 * factor_conversion(u2) / (v3 * factor_conversion(u3)) + " " + unidad_final;
-    dibujar();
 }
-
 
 function calcular_Area() {
     //Incognita es Area, datos 1 conocidos, y altura 2
@@ -147,22 +114,53 @@ function calcular_Area() {
     var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
     var h2 = document.getElementById("altura2").value * factor_conversion("area2");
 
-    var m2 =;
+    var m2 = h2 / h1 * m1;
+    var a2 = h2 / h2 * a1;
 
+    dibujar(a1, h1, m1, a2, h2, m2);
+
+    document.getElementById("prueba_resultado").innerHTML = a2 + " m2";
+    document.getElementById("prueba_resultado_2").innerHTML = m2 + " kg";
 }
 
-function dibujar() {
+function calcular_Masa() {
+    var a1 = document.getElementById("area1").value * factor_conversion("area1");
+    var h1 = document.getElementById("altura1").value * factor_conversion("altura1");
+    var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
+    var a2 = document.getElementById("area1").value * factor_conversion("area2");
+
+    var m2 = a2 / a1 * h1;
+    var h2 = a2 / a1 * h1;
+
+    dibujar(a1, h1, m1, a2, h2, m2);
+
+    document.getElementById("prueba_resultado").innerHTML = m2 + " kg";
+    document.getElementById("prueba_resultado_2").innerHTML = h2 + " m";
+}
+
+function calcular_Altura() {
+    var a1 = document.getElementById("area1").value * factor_conversion("area1");
+    var h1 = document.getElementById("altura1").value * factor_conversion("altura1");
+    var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
+    var m2 = document.getElementById("altura2").value * factor_conversion("masa2");
+
+    var a2 = m2 / m1 * a1;
+    var h2 = m2 / m1 * h1;
+
+    dibujar(a1, h1, m1, a2, h2, m2);
+
+    document.getElementById("prueba_resultado").innerHTML = h2 + " m";
+    document.getElementById("prueba_resultado_2").innerHTML = a2 + " m2";
+}
+
+function dibujar(a1, h1, m1, a2, h2, m2) {
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
 
     var ancho = canvas.width;
     var alto = canvas.height;
 
-    var yo = 20;
-    var h1 = document.getElementById("altura1").value;
-    var a1 = document.getElementById("area1").value;
-    var m1 = document.getElementById("masa1").value;
-    var h2 = -h1;
+    var yo = 20;            // altura base
 
     //ancho canvas= 900 alto= 440
 
@@ -194,7 +192,6 @@ function dibujar() {
     ctx.stroke();
     ctx.fill();
 
-
     ctx.closePath();
 }
 
@@ -216,30 +213,31 @@ function factor_conversion(unidad) {
 
 function verificar() {
     var estado = true;
-    if (document.getElementById("area1").value <= 0)
+    var stringerror;
+    if (document.getElementById("area1").value <= 0) {
         estado = false;
-    if (document.getElementById("masa1").value <= 0)
+        stringerror = "El area no puede ser negativa";
+    }
+    if (document.getElementById("masa1").value <= 0) {
         estado = false;
-    if (document.getElementById("altura1").value < 0)
-        estado = false;
+        stringerror = "La masa no puede ser negativa";
+    }
 
-    var incognita;
-
-    if (document.getElementById("area").checked)
-        incognita = "area";
-    if (document.getElementById("altura").checked)
-        incognita = "altura";
-    if (document.getElementById("masa").checked)
-        incognita = "masa";
-
-    switch (incognita) {
-
+    if (document.getElementById("area").checked) {
+        if (document.getElementById("altura1").value * document.getElementById("altura2").value > 0) {
+            estado = false;
+            stringerror = "Las alturas deben corresponderse";
+        }
+        if (document.getElementById("altura1").value == 0 && document.getElementById("altura2").value == 0)
+            estado = true;
+        else {
+            estado = false;
+            stringerror = "Las alturas deben corresponderse";
+        }
     }
 
     if (estado == true)
         calculos();
     else
-        alert("ESTO NO FUNCA");
-
-
+        alert("ESTO NO FUNCA: " + stringerror);
 }

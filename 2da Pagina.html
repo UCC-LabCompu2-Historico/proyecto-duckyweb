@@ -28,7 +28,8 @@
 
             <u>Calcular:</u><br>
             <label for="area">Área</label>
-            <input type="radio" name="incognita" value="Area" id="area" checked="" onchange="mostrarocultar(this.id)"><br>
+            <input type="radio" name="incognita" value="Area" id="area" checked=""
+                   onchange="mostrarocultar(this.id)"><br>
             <label for="altura">Altura</label>
             <input type="radio" name="incognita" value="Altura" id="altura" onchange="mostrarocultar(this.id)"><br>
             <label for="masa">Masa</label>
@@ -63,7 +64,7 @@
             </p>
             <p id="p_h1">
                 <label for="altura1">Altura 1:</label>
-                <input type="number" name="Altura1" min="0" id="altura1">
+                <input type="number" name="Altura1" id="altura1">
                 <select name="unidadesalt1" id="unidadesalt1">
                     <option value="m">m</option>
                     <option value="cm">cm</option>
@@ -71,7 +72,7 @@
             </p>
             <p id="p_h2">
                 <label for="altura2">Altura 2:</label>
-                <input type="number" name="Altura2" min="0" id="altura2">
+                <input type="number" name="Altura2" id="altura2">
                 <select name="unidadesalt2" id="unidadesalt2">
                     <option value="m">m</option>
                     <option value="cm">cm</option>
@@ -113,8 +114,14 @@
     </div>
 
     <div class="columna" id="resultados">
-        Resultados:
-        <output id="prueba_resultado"></output>
+        <p>
+            Resultados:
+            <output id="prueba_resultado"></output>
+        </p>
+        <p>
+            Resultado 2:
+            <output id="prueba_resultado_2"></output>
+        </p>
     </div>
 </div>
 
