@@ -49,33 +49,26 @@
 // };
 
 function mostrarocultar(incognita) {
+
+    document.getElementById("area1").value = "";
+    document.getElementById("area2").value = "";
+    document.getElementById("masa1").value = "";
+    document.getElementById("masa2").value = "";
+
+
     switch (incognita) {
         case "area":
             document.getElementById("p_m1").style.display = "block";
-            document.getElementById("p_h1").style.display = "block";
             document.getElementById("p_a1").style.display = "block";
-            document.getElementById("p_h2").style.display = "block";
-
             document.getElementById("p_a2").style.display = "none";
-            document.getElementById("p_m2").style.display = "none";
-            break;
-        case "altura":
-            document.getElementById("p_m1").style.display = "block";
-            document.getElementById("p_h1").style.display = "block";
-            document.getElementById("p_a1").style.display = "block";
             document.getElementById("p_m2").style.display = "block";
 
-            document.getElementById("p_h2").style.display = "none";
-            document.getElementById("p_a2").style.display = "none";
             break;
         case "masa":
             document.getElementById("p_m1").style.display = "block";
-            document.getElementById("p_h1").style.display = "block";
             document.getElementById("p_a1").style.display = "block";
             document.getElementById("p_a2").style.display = "block";
-
             document.getElementById("p_m2").style.display = "none";
-            document.getElementById("p_h2").style.display = "none";
             break;
         default:
             break;
@@ -83,77 +76,46 @@ function mostrarocultar(incognita) {
 }
 
 function calculos() {
-    var incognita;
-
-    if (document.getElementById("area").checked)
-        incognita = "area";
-    if (document.getElementById("altura").checked)
-        incognita = "altura";
-    if (document.getElementById("masa").checked)
-        incognita = "masa";
-
-    switch (incognita) {
-        case "area":
-            calcular_Area();
-            break;
-
-        case "altura":
-            calcular_Altura();
-            break;
-
-        case "masa":
-            calcular_Masa();
-            break;
+    if (document.getElementById("area").checked) {
+        calcular_Area();
+    }
+    if (document.getElementById("masa").checked) {
+        calcular_Masa();
     }
 }
 
 function calcular_Area() {
     //Incognita es Area, datos 1 conocidos, y altura 2
     var a1 = document.getElementById("area1").value * factor_conversion("area1");
-    var h1 = document.getElementById("altura1").value * factor_conversion("altura1");
     var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
-    var h2 = document.getElementById("altura2").value * factor_conversion("area2");
+    var m2 = document.getElementById("masa2").value * factor_conversion("masa2");
 
-    var m2 = h2 / h1 * m1;
-    var a2 = h2 / h2 * a1;
+    var a2 = a1 * (m2 / m1);
 
-    dibujar(a1, h1, m1, a2, h2, m2);
+    dibujar(a1, m1, a2, m2);
+
+    var pres = (m1 * 9.81) / a1;
 
     document.getElementById("prueba_resultado").innerHTML = a2 + " m2";
-    document.getElementById("prueba_resultado_2").innerHTML = m2 + " kg";
+    document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
 }
 
 function calcular_Masa() {
     var a1 = document.getElementById("area1").value * factor_conversion("area1");
-    var h1 = document.getElementById("altura1").value * factor_conversion("altura1");
     var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
-    var a2 = document.getElementById("area1").value * factor_conversion("area2");
+    var a2 = document.getElementById("area2").value * factor_conversion("area2");
 
-    var m2 = a2 / a1 * h1;
-    var h2 = a2 / a1 * h1;
+    var m2 = m1 * (a2 / a1);
 
-    dibujar(a1, h1, m1, a2, h2, m2);
+    dibujar(a1, m1, a2, m2);
+
+    var pres = (m1 * 9.81) / a1;
 
     document.getElementById("prueba_resultado").innerHTML = m2 + " kg";
-    document.getElementById("prueba_resultado_2").innerHTML = h2 + " m";
+    document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
 }
 
-function calcular_Altura() {
-    var a1 = document.getElementById("area1").value * factor_conversion("area1");
-    var h1 = document.getElementById("altura1").value * factor_conversion("altura1");
-    var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
-    var m2 = document.getElementById("altura2").value * factor_conversion("masa2");
-
-    var a2 = m2 / m1 * a1;
-    var h2 = m2 / m1 * h1;
-
-    dibujar(a1, h1, m1, a2, h2, m2);
-
-    document.getElementById("prueba_resultado").innerHTML = h2 + " m";
-    document.getElementById("prueba_resultado_2").innerHTML = a2 + " m2";
-}
-
-function dibujar(a1, h1, m1, a2, h2, m2) {
+function dibujar(a1, m1, a2, m2) {
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
 
@@ -167,44 +129,41 @@ function dibujar(a1, h1, m1, a2, h2, m2) {
     ctx.strokeStyle = "#9e9fa6";
     ctx.fillStyle = "#1d0bff";
     ctx.lineWidth = "8";
+    /*
+     ctx.beginPath();
 
-    ctx.beginPath();
+     ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
 
-    ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
+     ctx.rect((ancho / 2) - 125, alto - yo - 60 - h1, 40, 60 + h1);       //lado izq
 
-    ctx.rect((ancho / 2) - 125, alto - yo - 60 - h1, 40, 60 + h1);       //lado izq
+     ctx.rect((ancho / 2) + 125 - 60, alto - yo - 60 - h2, 60, 60 + h2);     //lado der
 
-    ctx.rect((ancho / 2) + 125 - 60, alto - yo - 60 - h2, 60, 60 + h2);     //lado der
+     ctx.stroke();
+     ctx.fill();
 
-    ctx.stroke();
-    ctx.fill();
+     ctx.closePath();
 
-    ctx.closePath();
+     ctx.strokeStyle = "#fffc4d";
+     ctx.fillStyle = "#ff0000";
 
-    ctx.strokeStyle = "#fffc4d";
-    ctx.fillStyle = "#ff0000";
+     ctx.beginPath();
 
-    ctx.beginPath();
+     ctx.rect((ancho / 2) - 125 + 20 - 10, alto - yo - 90, 20, 20);
+     ctx.rect((ancho / 2) + 125 - 40, alto - yo - 90, 20, 20);
 
-    ctx.rect((ancho / 2) - 125 + 20 - 10, alto - yo - 90, 20, 20);
-    ctx.rect((ancho / 2) + 125 - 40, alto - yo - 90, 20, 20);
+     ctx.stroke();
+     ctx.fill();
 
-    ctx.stroke();
-    ctx.fill();
-
-    ctx.closePath();
+     ctx.closePath();*/
 }
 
 function factor_conversion(unidad) {
-    unidad = document.getElementById(unidad);
+    unidad = document.getElementById("u" + unidad).value;
     if (unidad == "g")
-        return 1 / 1000;
-
-    if (unidad == "cm")
-        return 1 / 100;
+        return (1 / 1000);
 
     if (unidad == "cm2")
-        return 1 / (10000);
+        return (1 / 10000);
 
     return 1;
 }
@@ -223,18 +182,7 @@ function verificar() {
         stringerror = "La masa no puede ser negativa";
     }
 
-    if (document.getElementById("area").checked) {
-        if (document.getElementById("altura1").value * document.getElementById("altura2").value > 0) {
-            estado = false;
-            stringerror = "Las alturas deben corresponderse";
-        }
-        if (document.getElementById("altura1").value == 0 && document.getElementById("altura2").value == 0)
-            estado = true;
-        else {
-            estado = false;
-            stringerror = "Las alturas deben corresponderse";
-        }
-    }
+    //////////////////falta checkar la otra       "     "           *********************
 
     if (estado == true)
         calculos();
