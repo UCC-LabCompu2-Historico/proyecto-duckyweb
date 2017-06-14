@@ -18,6 +18,35 @@
  *
  */
 
+var altura_1 = document.getElementById("altura1");
+var altura_2 = document.getElementById("altura2");
+var masa_1 = document.getElementById("masa1");
+var masa_2 = document.getElementById("");
+var area_1 = document.getElementById("area1");
+var area_2 = document.getElementById("");
+
+// Objeto con constructor
+// var rueda = function ( d){
+//   this.diametro = d;
+//
+//   this.girar = function () {
+//       console.log("giro " + this.diametro);
+//   }
+// };
+
+var pepe = {
+    variable: "valor",
+    otravar: "otro valor",
+    otramas: 5,
+    funcion: function () {
+        console.log("esta es una funcion" + this.otramas);
+    },
+    otrafuncion: function () {
+        console.log("esta es otra funcion" + this.variable);
+    }
+};
+
+
 function mostrarocultar(incognita) {
     switch (incognita) {
         case "area":
@@ -111,6 +140,17 @@ function calculos() {
 }
 
 
+function calcular_Area() {
+    //Incognita es Area, datos 1 conocidos, y altura 2
+    var a1 = document.getElementById("area1").value * factor_conversion("area1");
+    var h1 = document.getElementById("altura1").value * factor_conversion("altura1");
+    var m1 = document.getElementById("masa1").value * factor_conversion("masa1");
+    var h2 = document.getElementById("altura2").value * factor_conversion("area2");
+
+    var m2 =;
+
+}
+
 function dibujar() {
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
@@ -119,7 +159,9 @@ function dibujar() {
     var alto = canvas.height;
 
     var yo = 20;
-    var h1 = 10;
+    var h1 = document.getElementById("altura1").value;
+    var a1 = document.getElementById("area1").value;
+    var m1 = document.getElementById("masa1").value;
     var h2 = -h1;
 
     //ancho canvas= 900 alto= 440
@@ -157,6 +199,7 @@ function dibujar() {
 }
 
 function factor_conversion(unidad) {
+    unidad = document.getElementById(unidad);
     if (unidad == "g")
         return 1 / 1000;
 
@@ -169,13 +212,15 @@ function factor_conversion(unidad) {
     return 1;
 }
 
+// variables nombre y unombre 
+
 function verificar() {
     var estado = true;
-    if(document.getElementById("area1").value <= 0)
+    if (document.getElementById("area1").value <= 0)
         estado = false;
-    if(document.getElementById("masa1").value <= 0)
+    if (document.getElementById("masa1").value <= 0)
         estado = false;
-    if(document.getElementById("altura1").value < 0)
+    if (document.getElementById("altura1").value < 0)
         estado = false;
 
     var incognita;
@@ -187,11 +232,11 @@ function verificar() {
     if (document.getElementById("masa").checked)
         incognita = "masa";
 
-    switch (incognita){
+    switch (incognita) {
 
     }
 
-    if(estado == true)
+    if (estado == true)
         calculos();
     else
         alert("ESTO NO FUNCA");
