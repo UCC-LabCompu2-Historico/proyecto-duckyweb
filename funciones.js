@@ -55,6 +55,9 @@ function mostrarocultar(incognita) {
     document.getElementById("masa1").value = "";
     document.getElementById("masa2").value = "";
 
+    document.getElementById("prueba_resultado").value = "";
+    document.getElementById("presion_resultado").value = "";
+
 
     switch (incognita) {
         case "area":
@@ -92,9 +95,9 @@ function calcular_Area() {
 
     var a2 = a1 * (m2 / m1);
 
-    dibujar(a1, m1, a2, m2);
-
     var pres = (m1 * 9.81) / a1;
+
+    dibujar(a1, m1, a2, m2, pres);
 
     document.getElementById("prueba_resultado").innerHTML = a2 + " m2";
     document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
@@ -107,15 +110,15 @@ function calcular_Masa() {
 
     var m2 = m1 * (a2 / a1);
 
-    dibujar(a1, m1, a2, m2);
-
     var pres = (m1 * 9.81) / a1;
+
+    dibujar(a1, m1, a2, m2, pres);
 
     document.getElementById("prueba_resultado").innerHTML = m2 + " kg";
     document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
 }
 
-function dibujar(a1, m1, a2, m2) {
+function dibujar(a1, m1, a2, m2, pres) {
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
 
@@ -124,37 +127,73 @@ function dibujar(a1, m1, a2, m2) {
 
     var yo = 20;            // altura base
 
+
+    var rel_1 = 1, rel_2 = 1;
+
+    var relacion_masas = m1 / m2;
+    if (m1 > m2) {
+        rel_1 = 1 - m2 / m1;
+        rel_2 = m2 / m1;
+    }
+    if (m2 > m1) {
+        rel_1 = m1 / m2;
+        rel_2 = 1 - m1 / m2;
+    }
+
+    var p = pres;
+    if (pres >= 20)
+        p = 20;
+
+    if (m1 == m2 && a1 == a2) {
+        p = 0;
+    }
+
+    console.log(relacion_masas);
+
+    var c;
+    if (a1 > a2) {
+        c = 1;
+    }
+    else {
+        c = -1;
+    }
+
     //ancho canvas= 900 alto= 440
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.strokeStyle = "#9e9fa6";
     ctx.fillStyle = "#1d0bff";
     ctx.lineWidth = "8";
-    /*
-     ctx.beginPath();
 
-     ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
+    ctx.beginPath();
 
-     ctx.rect((ancho / 2) - 125, alto - yo - 60 - h1, 40, 60 + h1);       //lado izq
+    ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
 
-     ctx.rect((ancho / 2) + 125 - 60, alto - yo - 60 - h2, 60, 60 + h2);     //lado der
+    ctx.rect((ancho / 2) - 125, alto - yo - 60 + c * p, 40, 60 - c * p);       //lado izq
 
-     ctx.stroke();
-     ctx.fill();
+    ctx.rect((ancho / 2) + 125 - 60, alto - yo - 60 - c * p, 60, 60 + c * p);     //lado der
 
-     ctx.closePath();
+    ctx.stroke();
+    ctx.fill();
 
-     ctx.strokeStyle = "#fffc4d";
-     ctx.fillStyle = "#ff0000";
+    ctx.closePath();
 
-     ctx.beginPath();
+    ctx.strokeStyle = "#DB871E";
+    ctx.fillStyle = "#e29f4a";
 
-     ctx.rect((ancho / 2) - 125 + 20 - 10, alto - yo - 90, 20, 20);
-     ctx.rect((ancho / 2) + 125 - 40, alto - yo - 90, 20, 20);
+    ctx.beginPath();
 
-     ctx.stroke();
-     ctx.fill();
+    var lado_m1 = (rel_1) * 15 + 25;
+    var lado_m2 = (rel_2) * 15 + 25;
 
-     ctx.closePath();*/
+    ctx.rect((ancho / 2) - 125 + 20 - lado_m1 / 2, 60 + c * p - lado_m1, lado_m1, lado_m1);    //(pos x, pos y, dim x, dim y)
+    ctx.rect((ancho / 2) + 125 - 30 - lado_m2 / 2, 60 - c * p - lado_m2, lado_m2, lado_m2);
+
+    ctx.stroke();
+    ctx.fill();
+
+    ctx.closePath();
 }
 
 function factor_conversion(unidad) {
@@ -180,6 +219,11 @@ function verificar() {
     if (document.getElementById("masa1").value <= 0) {
         estado = false;
         stringerror = "La masa no puede ser negativa";
+    }
+
+    if (document.getElementById("masa2").value <= 0 && document.getElementById("area2").value <= 0) {
+        estado = false;
+        stringerror = "Los datos no pueden ser negativos o nulos";
     }
 
     //////////////////falta checkar la otra       "     "           *********************

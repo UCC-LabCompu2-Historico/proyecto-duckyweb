@@ -1,10 +1,11 @@
 Tareas
-Reacomodar datosg
-Blanquear los datos
+
 convertir comas a puntos
+
 error para datos erronos
-Cambiar el calculo de area
-Limitar opciones de entrada
+
+truncar resultao
+
 
 Tener en cuenta (profes no leer)	
 
