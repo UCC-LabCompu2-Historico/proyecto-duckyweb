@@ -8,57 +8,18 @@
  * @param Parámetro A
  * @param Parámetro B
  * @return Valor que retorna
- *
+ */
+
+
+ /*
  * Oculta y/o muestra los datos dependiendo de lo que se desea calcular (ver technical_issues.txt)
  * @method mostrarocultar
  * @param incognita (area|altura|masa)
- *
- * Esta funcion hace los calculos y los muestra
- * @method calculos *
- *
  */
-
-/*
- var altura_1 = document.getElementById("altura1");
- var altura_2 = document.getElementById("altura2");
- var masa_1 = document.getElementById("masa1");
- var masa_2 = document.getElementById("");
- var area_1 = document.getElementById("area1");
- var area_2 = document.getElementById("");
- */
-
-// Objeto con constructor
-// var rueda = function ( d){
-//   this.diametro = d;
-//
-//   this.girar = function () {
-//       console.log("giro " + this.diametro);
-//   }
-// };
-
-// var pepe = {
-//     variable: "valor",
-//     otravar: "otro valor",
-//     otramas: 5,
-//     funcion: function () {
-//         console.log("esta es una funcion" + this.otramas);
-//     },
-//     otrafuncion: function () {
-//         console.log("esta es otra funcion" + this.variable);
-//     }
-// };
 
 function mostrarocultar(incognita) {
-
-    document.getElementById("area1").value = "";
-    document.getElementById("area2").value = "";
-    document.getElementById("masa1").value = "";
-    document.getElementById("masa2").value = "";
-
-    document.getElementById("prueba_resultado").value = "";
-    document.getElementById("presion_resultado").value = "";
-
-
+    resetear();
+    sacar_error();
     switch (incognita) {
         case "area":
             document.getElementById("p_m1").style.display = "block";
@@ -78,7 +39,13 @@ function mostrarocultar(incognita) {
     }
 }
 
+/*
+ Interpreta la incognita y conduce a la funcion correspondiente para calcularla
+ * @method calculos
+ * */
+
 function calculos() {
+    sacar_error();
     if (document.getElementById("area").checked) {
         calcular_Area();
     }
@@ -86,6 +53,11 @@ function calculos() {
         calcular_Masa();
     }
 }
+
+/*
+ realiza los calculos y muestra resultado para area y presión
+ * @method calcular_Area
+ * */
 
 function calcular_Area() {
     //Incognita es Area, datos 1 conocidos, y altura 2
@@ -99,9 +71,17 @@ function calcular_Area() {
 
     dibujar(a1, m1, a2, m2, pres);
 
+    a2 = Math.round(a2 * 1000) / 1000;
+    pres = Math.round(pres * 1000) / 1000;
+
     document.getElementById("prueba_resultado").innerHTML = a2 + " m2";
     document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
 }
+
+/*
+ realiza los calculos y muestra resultado para masa y presión
+ * @method calcular_Masa
+ * */
 
 function calcular_Masa() {
     var a1 = document.getElementById("area1").value * factor_conversion("area1");
@@ -114,21 +94,40 @@ function calcular_Masa() {
 
     dibujar(a1, m1, a2, m2, pres);
 
-    document.getElementById("prueba_resultado").innerHTML = m2 + " kg";
+    m2 = Math.round(m2 * 1000) / 1000;
+    pres = Math.round(pres * 1000) / 1000;
+
+    document.getElementById("prueba_resultado").innerHTML = m2 + " m2";
     document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
 }
+
+/*
+ Representa la sitación física a través de un gráfico (canvas) realizando los calculos necesarios para ello
+ * @method dibujar
+ * @param a1 (area 1)
+ * @param m1 (masa 1)
+ * @param a2 (area 2)
+ * @param m2 (masa 2)
+ * @param pres (presion)
+ *
+ * NOTA: altura base (yo) permite desplazar todo el gráfico hacia arriba o hacia abajo
+ *
+ * NOTA: en los ctx.rect no se simplifican u operan las constantes utilizadas, para mejor comprensión de
+ * su funcionamiento, como así también para una sencilla modificación posterior
+ *
+ * NOTA: ancho canvas= 900 alto= 440
+ *
+ * */
 
 function dibujar(a1, m1, a2, m2, pres) {
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
-
     var ancho = canvas.width;
     var alto = canvas.height;
 
-    var yo = 20;            // altura base
+    var yo = 20;
 
-
-    var rel_1 = 1, rel_2 = 1;
+    var rel_1 = 1, rel_2 = 1;          //
 
     var relacion_masas = m1 / m2;
     if (m1 > m2) {
@@ -140,25 +139,24 @@ function dibujar(a1, m1, a2, m2, pres) {
         rel_2 = 1 - m1 / m2;
     }
 
+    var relacion_areas = 0;
+    if (a1 > a2)
+        relacion_areas = 20;
+    if (a1 == a2)
+        relacion_areas = 10;
+
     var p = pres;
     if (pres >= 20)
         p = 20;
 
-    if (m1 == m2 && a1 == a2) {
+    if (m1 == m2 && a1 == a2)
         p = 0;
-    }
-
-    console.log(relacion_masas);
 
     var c;
-    if (a1 > a2) {
+    if (a1 > a2)
         c = 1;
-    }
-    else {
+    else
         c = -1;
-    }
-
-    //ancho canvas= 900 alto= 440
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -169,11 +167,8 @@ function dibujar(a1, m1, a2, m2, pres) {
     ctx.beginPath();
 
     ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
-
-    ctx.rect((ancho / 2) - 125, alto - yo - 60 + c * p, 40, 60 - c * p);       //lado izq
-
-    ctx.rect((ancho / 2) + 125 - 60, alto - yo - 60 - c * p, 60, 60 + c * p);     //lado der
-
+    ctx.rect((ancho / 2) - 125, alto - yo - 60 + c * p, 40 + relacion_areas, 60 - c * p);       //lado izq
+    ctx.rect((ancho / 2) + 125 - 60 + relacion_areas, alto - yo - 60 - c * p, 60 - relacion_areas, 60 + c * p);     //lado der
     ctx.stroke();
     ctx.fill();
 
@@ -187,14 +182,21 @@ function dibujar(a1, m1, a2, m2, pres) {
     var lado_m1 = (rel_1) * 15 + 25;
     var lado_m2 = (rel_2) * 15 + 25;
 
-    ctx.rect((ancho / 2) - 125 + 20 - lado_m1 / 2, 60 + c * p - lado_m1, lado_m1, lado_m1);    //(pos x, pos y, dim x, dim y)
-    ctx.rect((ancho / 2) + 125 - 30 - lado_m2 / 2, 60 - c * p - lado_m2, lado_m2, lado_m2);
+    ctx.rect((ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2, 60 + c * p - lado_m1, lado_m1, lado_m1);    //(pos x, pos y, dim x, dim y)
+    ctx.rect((ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2, 60 - c * p - lado_m2, lado_m2, lado_m2);
 
     ctx.stroke();
     ctx.fill();
 
     ctx.closePath();
 }
+
+/*
+ Realiza la conversión de unidades al sistema internacional (MKS)
+ * @method factor_conversion
+ * @param dimensión del dato (metros, kilos, centímetros, gramos)
+ * @return devuelve el valor equivalente de lo ingresado en MKS
+ * */
 
 function factor_conversion(unidad) {
     unidad = document.getElementById("u" + unidad).value;
@@ -207,29 +209,83 @@ function factor_conversion(unidad) {
     return 1;
 }
 
-// variables nombre y unombre 
+/*
+ comprueba que los datos ingresados en la página, se correspondan con su sentido físico
+ * @method verificar;
+ *
+ * NOTA: hace llamadas a funciones como sacar_error y calculos
+ * */
 
 function verificar() {
+    sacar_error();
     var estado = true;
     var stringerror;
     if (document.getElementById("area1").value <= 0) {
         estado = false;
-        stringerror = "El area no puede ser negativa";
+        stringerror = "El area debe ser un número positivo";
+        document.getElementById("area1").style.border = '4px solid #b21020';
     }
     if (document.getElementById("masa1").value <= 0) {
         estado = false;
-        stringerror = "La masa no puede ser negativa";
+        stringerror = "La masa debe ser un número positivo";
+        document.getElementById("masa1").style.border = '4px solid #b21020';
     }
 
     if (document.getElementById("masa2").value <= 0 && document.getElementById("area2").value <= 0) {
         estado = false;
-        stringerror = "Los datos no pueden ser negativos o nulos";
+        stringerror = "El valor del último campo debe ser positivo";
+        document.getElementById("masa2").style.border = '4px solid #b21020';
+        document.getElementById("area2").style.border = '4px solid #b21020';
     }
-
-    //////////////////falta checkar la otra       "     "           *********************
 
     if (estado == true)
         calculos();
     else
-        alert("ESTO NO FUNCA: " + stringerror);
+        alert("Ups, dato erroneo! " + stringerror);
+}
+
+/*
+ Elimina el contenido de los inputs de la pagina
+ * @method resetear
+ * */
+
+function resetear() {
+    sacar_error();
+    document.getElementById("area1").value = "";
+    document.getElementById("area2").value = "";
+    document.getElementById("masa1").value = "";
+    document.getElementById("masa2").value = "";
+
+    document.getElementById("prueba_resultado").value = "";
+    document.getElementById("presion_resultado").value = "";
+
+    var canvas = document.getElementById("mycanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+/*
+ rellena los inputs con valores aleatorios
+ * @method randomear
+ * */
+
+function randomear() {
+    sacar_error();
+    resetear();
+    document.getElementById("area1").value = Math.random() * 10;
+    document.getElementById("area2").value = Math.random() * 10;
+    document.getElementById("masa1").value = Math.random() * 10;
+    document.getElementById("masa2").value = Math.random() * 10;
+}
+
+/*
+ Elimina los bordes rojos de los inputs con valores erroneos
+ * @method sacar_error
+ * */
+
+function sacar_error() {
+    document.getElementById("area1").style.border = '';
+    document.getElementById("masa1").style.border = '';
+    document.getElementById("masa2").style.border = '';
+    document.getElementById("area2").style.border = '';
 }

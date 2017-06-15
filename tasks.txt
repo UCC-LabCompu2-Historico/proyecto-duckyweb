@@ -1,10 +1,13 @@
 Tareas
 
-convertir comas a puntos
 
-error para datos erronos
+mensajito personalizado con pato
+//http://www.desarrollolibre.net/blog/tema/24/css/usando-css-para-validar-visualmente-campos-del-formulario#.WUIDDMYyGUk
 
-truncar resultao
+
+
+
+
 
 
 Tener en cuenta (profes no leer)	
@@ -12,3 +15,33 @@ Tener en cuenta (profes no leer)
 
 Consultas
 
+
+
+
+
+
+
+
+NOTA
+
+
+// Objeto con constructor
+// var rueda = function ( d){
+//   this.diametro = d;
+//
+//   this.girar = function () {
+//       console.log("giro " + this.diametro);
+//   }
+// };
+
+// var pepe = {
+//     variable: "valor",
+//     otravar: "otro valor",
+//     otramas: 5,
+//     funcion: function () {
+//         console.log("esta es una funcion" + this.otramas);
+//     },
+//     otrafuncion: function () {
+//         console.log("esta es otra funcion" + this.variable);
+//     }
+// };

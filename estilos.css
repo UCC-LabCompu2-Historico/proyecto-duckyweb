@@ -16,6 +16,10 @@ a {
     text-decoration: none;
 }
 
+header {
+    padding: 20px;
+}
+
 #logo, #logo img {
     width: 100px;
     border: none;
@@ -24,6 +28,8 @@ a {
 
 #titulo, #inicio {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #titulo {
