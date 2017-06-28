@@ -11,7 +11,7 @@
  */
 
 
- /*
+/*
  * Oculta y/o muestra los datos dependiendo de lo que se desea calcular (ver technical_issues.txt)
  * @method mostrarocultar
  * @param incognita (area|altura|masa)
@@ -187,6 +187,22 @@ function dibujar(a1, m1, a2, m2, pres) {
 
     ctx.stroke();
     ctx.fill();
+
+    ctx.closePath();
+
+    ctx.closePath();
+
+    ctx.font = "15pt Amatic SC";
+    ctx.fillStyle = '#48A';
+    ctx.strokeStyle = '#0FF';
+
+    ctx.beginPath();
+
+    ctx.fillText("m1", (ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2 - 25, 60 + c * p - lado_m1 + 20);
+    ctx.fillText("m2", (ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2 - 25, 60 - c * p - lado_m2 + 20);
+
+    ctx.fill();
+    ctx.stroke();
 
     ctx.closePath();
 }
