@@ -158,53 +158,64 @@ function dibujar(a1, m1, a2, m2, pres) {
     else
         c = -1;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var ilatina = 0;
 
-    ctx.strokeStyle = "#9e9fa6";
-    ctx.fillStyle = "#1d0bff";
-    ctx.lineWidth = "8";
+    int = setInterval(function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.beginPath();
+        ctx.strokeStyle = "#9e9fa6";
+        ctx.fillStyle = "#1d0bff";
+        ctx.lineWidth = "8";
 
-    ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
-    ctx.rect((ancho / 2) - 125, alto - yo - 60 + c * p, 40 + relacion_areas, 60 - c * p);       //lado izq
-    ctx.rect((ancho / 2) + 125 - 60 + relacion_areas, alto - yo - 60 - c * p, 60 - relacion_areas, 60 + c * p);     //lado der
-    ctx.stroke();
-    ctx.fill();
+        ctx.beginPath();
 
-    ctx.closePath();
+        ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
+        ctx.rect((ancho / 2) - 125, alto - yo - 60 + c * ilatina, 40 + relacion_areas, 60 - c * ilatina);       //lado izq
+        ctx.rect((ancho / 2) + 125 - 60 + relacion_areas, alto - yo - 60 - c * ilatina, 60 - relacion_areas, 60 + c * ilatina);     //lado der
+        ctx.stroke();
+        ctx.fill();
 
-    ctx.strokeStyle = "#DB871E";
-    ctx.fillStyle = "#e29f4a";
+        ctx.closePath();
 
-    ctx.beginPath();
+        ctx.strokeStyle = "#DB871E";
+        ctx.fillStyle = "#e29f4a";
 
-    var lado_m1 = (rel_1) * 15 + 25;
-    var lado_m2 = (rel_2) * 15 + 25;
+        ctx.beginPath();
 
-    ctx.rect((ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2, 60 + c * p - lado_m1, lado_m1, lado_m1);    //(pos x, pos y, dim x, dim y)
-    ctx.rect((ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2, 60 - c * p - lado_m2, lado_m2, lado_m2);
+        var lado_m1 = (rel_1) * 15 + 25;
+        var lado_m2 = (rel_2) * 15 + 25;
 
-    ctx.stroke();
-    ctx.fill();
+        ctx.rect((ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2, 60 + c * ilatina - lado_m1, lado_m1, lado_m1);    //(pos x, pos y, dim x, dim y)
+        ctx.rect((ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2, 60 - c * ilatina - lado_m2, lado_m2, lado_m2);
 
-    ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
 
-    ctx.closePath();
+        ctx.closePath();
 
-    ctx.font = "15pt Amatic SC";
-    ctx.fillStyle = '#48A';
-    ctx.strokeStyle = '#0FF';
+        ctx.closePath();
 
-    ctx.beginPath();
+        ctx.font = "15pt Amatic SC";
+        ctx.fillStyle = '#48A';
+        ctx.strokeStyle = '#0FF';
 
-    ctx.fillText("m1", (ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2 - 25, 60 + c * p - lado_m1 + 20);
-    ctx.fillText("m2", (ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2 - 25, 60 - c * p - lado_m2 + 20);
+        ctx.beginPath();
 
-    ctx.fill();
-    ctx.stroke();
+        ctx.fillText("m1", (ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2 - 25, 60 + c * ilatina - lado_m1 + 20);
+        ctx.fillText("m2", (ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2 - 25, 60 - c * ilatina - lado_m2 + 20);
 
-    ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        console.log("a");
+
+        ctx.closePath();
+        if (ilatina < p)
+            ilatina++;
+        else
+            clearInterval(int);
+
+    }, 1000 / 30);
 }
 
 /*
@@ -298,6 +309,16 @@ function randomear() {
  Elimina los bordes rojos de los inputs con valores erroneos
  * @method sacar_error
  * */
+
+function repetir() {
+    verificar();
+}
+
+function borracanvas() {
+    var canvas = document.getElementById("mycanvas");
+    var ctx = canvas.getContext("2d");
+    canvas.width = canvas.width;
+}
 
 function sacar_error() {
     document.getElementById("area1").style.border = '';

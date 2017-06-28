@@ -39,7 +39,7 @@
             <u>Datos:</u>
             <p id="p_a1">
                 <label for="area1">Área 1:</label>
-                <input type="number" name="Area1" min="0" id="area1">
+                <input type="number" name="Area1" min="0" id="area1" onchange="borracanvas()">
                 <select name="unidadesa1" id="uarea1">
                     <option value="m2">
                         m2
@@ -51,7 +51,7 @@
             </p>
             <p id="p_m1">
                 <label for="masa1">Masa 1:</label>
-                <input type="number" name="Masa1" min="0" id="masa1">
+                <input type="number" name="Masa1" min="0" id="masa1" onchange="borracanvas()">
                 <select name="unidadesm1" id="umasa1">
                     <option value=kg>kg</option>
                     <option value="g">g</option>
@@ -59,7 +59,7 @@
             </p>
             <p id="p_a2">
                 <label for="area2">Área 2:</label>
-                <input type="number" name="Area2" min="0" id="area2">
+                <input type="number" name="Area2" min="0" id="area2" onchange="borracanvas()">
                 <select name="unidadesa2" id="uarea2">
                     <option value="m2">m2</option>
                     <option value="cm2">cm2</option>
@@ -67,7 +67,7 @@
             </p>
             <p id="p_m2">
                 <label for="masa2">Masa 2:</label>
-                <input type="number" name="Masa2" min="0" id="masa2">
+                <input type="number" name="Masa2" min="0" id="masa2" onchange="borracanvas()">
                 <select name="unidadesm2" id="umasa2">
                     <option value="kg">kg</option>
                     <option value="g">g</option>
@@ -104,7 +104,7 @@
     </div>
 </div>
 
-<button class="boton" id="repite" type="button">Repetir ↺</button>
+<button class="boton" id="repite" type="button" onclick="repetir()">Repetir ↺</button>
 
 </body>
 </html>
