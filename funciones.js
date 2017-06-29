@@ -122,12 +122,21 @@ function calcular_Masa() {
 function dibujar(a1, m1, a2, m2, pres) {
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
+
+
+    canvas.width = 1800;
+    canvas.height = 880;
+
     var ancho = canvas.width;
     var alto = canvas.height;
 
-    var yo = 20;
+    var ratio = 1;
 
-    var rel_1 = 1, rel_2 = 1;          //
+    var ppcion = 6;
+
+    var yo = 10 * ppcion;
+
+    var rel_1 = 1, rel_2 = 1;
 
     var relacion_masas = m1 / m2;
     if (m1 > m2) {
@@ -145,6 +154,16 @@ function dibujar(a1, m1, a2, m2, pres) {
     if (a1 == a2)
         relacion_areas = 10;
 
+
+    var ar_1 = 10, ar_2 = 20;
+    if (a1 > a2) {
+        ar_1 = 20;
+        ar_2 = 10;
+    }
+    if (a1 === a2) {
+        ar_2 = 10;
+    }
+
     var p = pres;
     if (pres >= 20)
         p = 20;
@@ -160,18 +179,19 @@ function dibujar(a1, m1, a2, m2, pres) {
 
     var ilatina = 0;
 
-    int = setInterval(function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var int = setInterval(function () {
+        canvas.width = canvas.width;
+        canvas.height = canvas.height;
 
         ctx.strokeStyle = "#9e9fa6";
         ctx.fillStyle = "#1d0bff";
-        ctx.lineWidth = "8";
+        ctx.lineWidth = "50";  //8
 
         ctx.beginPath();
 
-        ctx.rect((ancho / 2) - 125, alto - yo - 30, 250, 30);   //base prensa
-        ctx.rect((ancho / 2) - 125, alto - yo - 60 + c * ilatina, 40 + relacion_areas, 60 - c * ilatina);       //lado izq
-        ctx.rect((ancho / 2) + 125 - 60 + relacion_areas, alto - yo - 60 - c * ilatina, 60 - relacion_areas, 60 + c * ilatina);     //lado der
+        ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 30 * ppcion) * ratio, 250 * ratio * ppcion, 30 * ratio * ppcion);   //base prensa
+        ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 60 * ppcion + c * ilatina) * ratio, (40 * ppcion + relacion_areas) * ratio, 60 * ppcion - c * ilatina * ratio);       //lado izq
+        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas) * ratio, (alto - yo - 60 * ppcion - c * ilatina) * ratio, 60 * ppcion - relacion_areas * ratio, (60 * ppcion + c * ilatina) * ratio);     //lado der
         ctx.stroke();
         ctx.fill();
 
@@ -185,8 +205,9 @@ function dibujar(a1, m1, a2, m2, pres) {
         var lado_m1 = (rel_1) * 15 + 25;
         var lado_m2 = (rel_2) * 15 + 25;
 
-        ctx.rect((ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2, 60 + c * ilatina - lado_m1, lado_m1, lado_m1);    //(pos x, pos y, dim x, dim y)
-        ctx.rect((ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2, 60 - c * ilatina - lado_m2, lado_m2, lado_m2);
+        ctx.rect((ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas) / 2 - lado_m1 * ppcion / 2, (alto - yo - 60 * ppcion + c * ilatina) - lado_m1 * ppcion - 60, lado_m1 * ppcion, lado_m1 * ppcion);  //masa 1 izq
+
+        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas) + (60 * ppcion - relacion_areas) / 2 - lado_m2 * ppcion / 2, (alto - yo - 60 * ppcion - c * ilatina) - lado_m2 * ppcion - 60, lado_m2 * ppcion, lado_m2 * ppcion);    //masa 2 der
 
         ctx.stroke();
         ctx.fill();
@@ -195,23 +216,21 @@ function dibujar(a1, m1, a2, m2, pres) {
 
         ctx.closePath();
 
-        ctx.font = "15pt Amatic SC";
+        ctx.font = "60pt Amatic SC";
         ctx.fillStyle = '#48A';
         ctx.strokeStyle = '#0FF';
 
         ctx.beginPath();
 
-        ctx.fillText("m1", (ancho / 2) - 125 + 20 - lado_m1 / 2 + relacion_areas / 2 - 25, 60 + c * ilatina - lado_m1 + 20);
-        ctx.fillText("m2", (ancho / 2) + 125 - 30 - lado_m2 / 2 + relacion_areas / 2 - 25, 60 - c * ilatina - lado_m2 + 20);
+        ctx.fillText("m1", (ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas) / 2 - lado_m1 * ppcion / 2 - 25 * ppcion, (alto - yo - 60 * ppcion + c * ilatina) - lado_m1 * ppcion - 60 + lado_m1 * ppcion / 2);
+        ctx.fillText("m2", ((ancho / 2) + (125 - 60) * ppcion + relacion_areas) + (60 * ppcion - relacion_areas) / 2 - lado_m2 * ppcion / 2 - 25 * ppcion, (alto - yo - 60 * ppcion - c * ilatina) - lado_m2 * ppcion - 60 + lado_m2 * ppcion / 2);
 
         ctx.fill();
         ctx.stroke();
 
-        console.log("a");
-
         ctx.closePath();
         if (ilatina < p)
-            ilatina++;
+            ilatina ++;
         else
             clearInterval(int);
 
