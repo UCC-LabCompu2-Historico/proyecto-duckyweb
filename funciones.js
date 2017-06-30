@@ -74,7 +74,7 @@ function calcular_Area() {
     a2 = Math.round(a2 * 1000) / 1000;
     pres = Math.round(pres * 1000) / 1000;
 
-    document.getElementById("prueba_resultado").innerHTML = a2 + " m2";
+    document.getElementById("prueba_resultado").innerHTML = a2 + " m&sup2";
     document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
 }
 
@@ -97,7 +97,7 @@ function calcular_Masa() {
     m2 = Math.round(m2 * 1000) / 1000;
     pres = Math.round(pres * 1000) / 1000;
 
-    document.getElementById("prueba_resultado").innerHTML = m2 + " m&sup2";
+    document.getElementById("prueba_resultado").innerHTML = m2 + " kg";
     document.getElementById("presion_resultado").innerHTML = pres + " N/m&sup2";
 }
 
