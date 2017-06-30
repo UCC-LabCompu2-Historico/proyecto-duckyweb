@@ -115,11 +115,14 @@ function calcular_Masa() {
  * NOTA: en los ctx.rect no se simplifican u operan las constantes utilizadas, para mejor comprensión de
  * su funcionamiento, como así también para una sencilla modificación posterior
  *
- * NOTA: ancho canvas= 900 alto= 440
+ * NOTA: se utiliza set interval para animar el canvas
  *
  * */
 
 function dibujar(a1, m1, a2, m2, pres) {
+
+    cargalink(a1, m1, a2, m2);
+
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
 
@@ -266,15 +269,18 @@ function verificar() {
     sacar_error();
     var estado = true;
     var stringerror;
+    var count = 0;
     if (document.getElementById("area1").value <= 0) {
         estado = false;
         stringerror = "El area debe ser un número positivo";
         document.getElementById("area1").style.border = '4px solid #b21020';
+        count++;
     }
     if (document.getElementById("masa1").value <= 0) {
         estado = false;
         stringerror = "La masa debe ser un número positivo";
         document.getElementById("masa1").style.border = '4px solid #b21020';
+        count++;
     }
 
     if (document.getElementById("masa2").value <= 0 && document.getElementById("area2").value <= 0) {
@@ -282,7 +288,11 @@ function verificar() {
         stringerror = "El valor del último campo debe ser positivo";
         document.getElementById("masa2").style.border = '4px solid #b21020';
         document.getElementById("area2").style.border = '4px solid #b21020';
+        count++;
     }
+
+    if (count > 1)
+        stringerror = "Ingrese los valores correctos para calcular";
 
     if (estado == true)
         calculos();
@@ -329,9 +339,17 @@ function randomear() {
  * @method sacar_error
  * */
 
-function repetir() {
-    verificar();
+function sacar_error() {
+    document.getElementById("area1").style.border = '';
+    document.getElementById("masa1").style.border = '';
+    document.getElementById("masa2").style.border = '';
+    document.getElementById("area2").style.border = '';
 }
+
+/*
+ Elimina el contenido del Canvas
+ * @method borracanvas
+ * */
 
 function borracanvas() {
     var canvas = document.getElementById("mycanvas");
@@ -339,9 +357,37 @@ function borracanvas() {
     canvas.width = canvas.width;
 }
 
-function sacar_error() {
-    document.getElementById("area1").style.border = '';
-    document.getElementById("masa1").style.border = '';
-    document.getElementById("masa2").style.border = '';
-    document.getElementById("area2").style.border = '';
+/*
+ Modifica el link con los datos ingresados por el usuario
+ * @method cargalink
+ * @param areas y masas
+ *
+ * NOTA: esta funcion tiene razon de ser al utilizar repetir
+ *
+ * */
+
+function cargalink(a1, m1, a2, m2) {
+    var link = "#" + a1 + "#" + m1 + "#" + a2 + "#" + m2;
+    window.location.replace(link);
+}
+
+/*
+ Vuelve a graficar los últimos datos calculados
+ * @method repetir
+ *
+ * NOTA: recibe los datos cargados en la url
+ * */
+
+function repetir() {
+    var cadena = window.location.hash.split("#");
+    document.getElementById("area1").value = cadena[1];
+    document.getElementById("uarea1").value = "m2";
+    document.getElementById("masa1").value = cadena[2];
+    document.getElementById("umasa1").value= "kg";
+    document.getElementById("area2").value = cadena[3];
+    document.getElementById("uarea2").value = "m2";
+    document.getElementById("masa2").value = cadena[4];
+    document.getElementById("umasa2").value= "kg";
+
+    verificar();
 }
