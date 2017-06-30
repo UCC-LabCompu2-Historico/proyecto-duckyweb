@@ -1,10 +1,6 @@
 Tareas
-HD-4k- 60fps
-texto para masas
-animacion 
-repetir
 comentar
-
+GH-PAGES ISSUES
 
 
 mensajito personalizado con pato
@@ -51,3 +47,66 @@ NOTA
 //         console.log("esta es otra funcion" + this.variable);
 //     }
 // };
+
+
+
+
+
+
+ /*
+     var m1c = m1;
+     var m2c = m2;
+
+     while (m1c >= 10000000 || m2c >= 10000000) {
+     m1c /= 10;
+     m2c /= 10;
+     }
+
+
+     if (m1c > m2c) {
+     while (m1c * ppcion < 150 || m1c * ppcion > 300) {
+     if (m1c * ppcion < 200) {
+     m1c += 2;
+     m2c += 2;
+     }
+     if (m1c * ppcion > 300) {
+     m1c -= 2;
+     m2c -= 2;
+     }
+     }
+     }
+
+     if (m2c > m1c) {
+     while (m2c * ppcion < 150 || m2c * ppcion > 300) {
+     if (m2c * ppcion < 200) {
+     m1c += 2;
+     m2c += 2;
+     }
+     if (m2c * ppcion > 300) {
+     m1c -= 2;
+     m2c -= 2;
+     }
+     }
+     }
+
+     if (m2c === m1c) {
+     m2c = 250 / ppcion;
+     m1c = 250 / ppcion;
+     }
+
+     if (m1c * ppcion <= 30)
+     m1c = 30 / ppcion;
+
+     if (m2c * ppcion <= 30)
+     m2c = 30 / ppcion;
+
+     */
+
+
+
+------
+
+ /*
+         var lado_m1 = m1c;
+         var lado_m2 = m2c;
+         */

@@ -3,15 +3,6 @@
  */
 
 /*
- Descripción
- * @method Nombre de la función
- * @param Parámetro A
- * @param Parámetro B
- * @return Valor que retorna
- */
-
-
-/*
  * Oculta y/o muestra los datos dependiendo de lo que se desea calcular (ver technical_issues.txt)
  * @method mostrarocultar
  * @param incognita (area|altura|masa)
@@ -46,16 +37,15 @@ function mostrarocultar(incognita) {
 
 function calculos() {
     sacar_error();
-    if (document.getElementById("area").checked) {
+    if (document.getElementById("area").checked)
         calcular_Area();
-    }
-    if (document.getElementById("masa").checked) {
+
+    if (document.getElementById("masa").checked)
         calcular_Masa();
-    }
 }
 
 /*
- realiza los calculos y muestra resultado para area y presión
+ Realiza los calculos y muestra resultado para area y presión
  * @method calcular_Area
  * */
 
@@ -75,11 +65,11 @@ function calcular_Area() {
     pres = Math.round(pres * 1000) / 1000;
 
     document.getElementById("prueba_resultado").innerHTML = a2 + " m&sup2";
-    document.getElementById("presion_resultado").innerHTML = pres + " N/m2";
+    document.getElementById("presion_resultado").innerHTML = pres + " N/m&sup2";
 }
 
 /*
- realiza los calculos y muestra resultado para masa y presión
+ Realiza los cálculos y muestra resultado para masa y presión
  * @method calcular_Masa
  * */
 
@@ -102,7 +92,7 @@ function calcular_Masa() {
 }
 
 /*
- Representa la sitación física a través de un gráfico (canvas) realizando los calculos necesarios para ello
+ Representa la situación física a través de un gráfico (canvas) realizando los cálculos necesarios para ello
  * @method dibujar
  * @param a1 (area 1)
  * @param m1 (masa 1)
@@ -120,12 +110,10 @@ function calcular_Masa() {
  * */
 
 function dibujar(a1, m1, a2, m2, pres) {
-
     cargalink(a1, m1, a2, m2);
 
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
-
 
     canvas.width = 1800;
     canvas.height = 880;
@@ -133,45 +121,65 @@ function dibujar(a1, m1, a2, m2, pres) {
     var ancho = canvas.width;
     var alto = canvas.height;
 
-    var ratio = 1;
-
     var ppcion = 6;
 
     var yo = 10 * ppcion;
 
-    var rel_1 = 1, rel_2 = 1;
+    var j = 0;
 
-    var relacion_masas = m1 / m2;
-    if (m1 > m2) {
-        rel_1 = 1 - m2 / m1;
-        rel_2 = m2 / m1;
+    var m1c = m1;
+    var m2c = m2;
+
+    while (m1c >= 100000 || m2c >= 100000) {
+        m1c /= 10;
+        m2c /= 10;
     }
-    if (m2 > m1) {
-        rel_1 = m1 / m2;
-        rel_2 = 1 - m1 / m2;
+
+    if (m1c > m2c) {
+        do
+            j++;
+        while (m1c * 10 / j > 50);
     }
+    if (m2c > m1c) {
+        do
+            j++;
+        while (m2c * 10 / j > 50);
+    }
+
+    if (m1c * ppcion <= 30)
+        m1c = 30 / ppcion;
+
+    if (m2c * ppcion <= 30)
+        m2c = 30 / ppcion;
+
+    if (m1c === m2c) {
+        m1c = 25 / ppcion;
+        m2c = 25 / ppcion;
+        j = 1;
+    }
+
 
     var relacion_areas = 0;
     if (a1 > a2)
         relacion_areas = 20;
-    if (a1 == a2)
+    if (a1 === a2)
         relacion_areas = 10;
 
-
-    var ar_1 = 10, ar_2 = 20;
-    if (a1 > a2) {
-        ar_1 = 20;
-        ar_2 = 10;
-    }
-    if (a1 === a2) {
-        ar_2 = 10;
-    }
-
+    /*
+     var ar_1 = 10, ar_2 = 20;
+     if (a1 > a2) {
+     ar_1 = 20;
+     ar_2 = 10;
+     }
+     if (a1 === a2) {
+     ar_2 = 10;
+     }
+     */
     var p = pres;
     if (pres >= 20)
         p = 20;
 
-    if (m1 == m2 && a1 == a2)
+    if (m1 === m2 && a1 === a2)
         p = 0;
 
     var c;
@@ -180,7 +188,7 @@ function dibujar(a1, m1, a2, m2, pres) {
     else
         c = -1;
 
-    var ilatina = 0;
+    var i = 0;
 
     var int = setInterval(function () {
         canvas.width = canvas.width;
@@ -188,13 +196,13 @@ function dibujar(a1, m1, a2, m2, pres) {
 
         ctx.strokeStyle = "#9e9fa6";
         ctx.fillStyle = "#1d0bff";
-        ctx.lineWidth = "50";  //8
+        ctx.lineWidth = "50";
 
         ctx.beginPath();
 
-        ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 30 * ppcion) * ratio, 250 * ratio * ppcion, 30 * ratio * ppcion);   //base prensa
-        ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 60 * ppcion + c * ilatina) * ratio, (40 * ppcion + relacion_areas * ppcion) * ratio, 60 * ppcion - c * ilatina * ratio);       //lado izq
-        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas * ppcion) * ratio, (alto - yo - 60 * ppcion - c * ilatina) * ratio, 60 * ppcion - relacion_areas * ratio * ppcion, (60 * ppcion + c * ilatina) * ratio);     //lado der
+        ctx.rect(((ancho / 2) - 125 * ppcion), (alto - yo - 30 * ppcion), 250 * ppcion, 30 * ppcion);   //base prensa
+        ctx.rect(((ancho / 2) - 125 * ppcion), (alto - yo - 60 * ppcion + c * i), (40 * ppcion + relacion_areas * ppcion), 60 * ppcion - c * i);       //lado izq
+        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas * ppcion), (alto - yo - 60 * ppcion - c * i), 60 * ppcion - relacion_areas * ppcion, (60 * ppcion + c * i));     //lado der
         ctx.stroke();
         ctx.fill();
 
@@ -205,17 +213,14 @@ function dibujar(a1, m1, a2, m2, pres) {
 
         ctx.beginPath();
 
-        var lado_m1 = (rel_1) * 15 + 25;
-        var lado_m2 = (rel_2) * 15 + 25;
+        var lado_m1 = m1c * 10 / j;
+        var lado_m2 = m2c * 10 / j;
 
-        ctx.rect((ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas * ppcion) / 2 - lado_m1 * ppcion / 2, (alto - yo - 60 * ppcion + c * ilatina) - lado_m1 * ppcion - 60, lado_m1 * ppcion, lado_m1 * ppcion);  //masa 1 izq
-
-        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas * ppcion) + (60 * ppcion - relacion_areas * ppcion) / 2 - lado_m2 * ppcion / 2, (alto - yo - 60 * ppcion - c * ilatina) - lado_m2 * ppcion - 60, lado_m2 * ppcion, lado_m2 * ppcion);    //masa 2 der
+        ctx.rect((ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas * ppcion) / 2 - lado_m1 * ppcion / 2, (alto - yo - 60 * ppcion + c * i) - lado_m1 * ppcion - 60, lado_m1 * ppcion, lado_m1 * ppcion);  //masa 1 izq
+        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas * ppcion) + (60 * ppcion - relacion_areas * ppcion) / 2 - lado_m2 * ppcion / 2, (alto - yo - 60 * ppcion - c * i) - lado_m2 * ppcion - 60, lado_m2 * ppcion, lado_m2 * ppcion);    //masa 2 der
 
         ctx.stroke();
         ctx.fill();
-
-        ctx.closePath();
 
         ctx.closePath();
 
@@ -225,15 +230,15 @@ function dibujar(a1, m1, a2, m2, pres) {
 
         ctx.beginPath();
 
-        ctx.fillText("m1", (ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas) / 2 - lado_m1 * ppcion / 2 - 25 * ppcion, (alto - yo - 60 * ppcion + c * ilatina) - lado_m1 * ppcion - 60 + lado_m1 * ppcion / 2);
-        ctx.fillText("m2", ((ancho / 2) + (125 - 60) * ppcion + relacion_areas) + (60 * ppcion - relacion_areas) / 2 - lado_m2 * ppcion / 2 - 25 * ppcion, (alto - yo - 60 * ppcion - c * ilatina) - lado_m2 * ppcion - 60 + lado_m2 * ppcion / 2);
+        ctx.fillText("m1", (ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas) / 2 - lado_m1 * ppcion / 2 - 20 * ppcion, (alto - yo - 60 * ppcion + c * i) - lado_m1 * ppcion - 60 + lado_m1 * ppcion / 2);
+        ctx.fillText("m2", ((ancho / 2) + (125 - 60) * ppcion + relacion_areas) + (60 * ppcion - relacion_areas) / 2 - lado_m2 * ppcion / 2 - 20 * ppcion, (alto - yo - 60 * ppcion - c * i) - lado_m2 * ppcion - 60 + lado_m2 * ppcion / 2);
 
         ctx.fill();
         ctx.stroke();
 
         ctx.closePath();
-        if (ilatina < p)
-            ilatina++;
+        if (i < p)
+            i++;
         else
             clearInterval(int);
 
@@ -259,7 +264,7 @@ function factor_conversion(unidad) {
 }
 
 /*
- comprueba que los datos ingresados en la página, se correspondan con su sentido físico
+ Comprueba que los datos ingresados en la página, se correspondan con su sentido físico
  * @method verificar;
  *
  * NOTA: hace llamadas a funciones como sacar_error y calculos
@@ -272,10 +277,11 @@ function verificar() {
     var count = 0;
     if (document.getElementById("area1").value <= 0) {
         estado = false;
-        stringerror = "El area debe ser un número positivo";
+        stringerror = "El área debe ser un número positivo";
         document.getElementById("area1").style.border = '4px solid #b21020';
         count++;
     }
+
     if (document.getElementById("masa1").value <= 0) {
         estado = false;
         stringerror = "La masa debe ser un número positivo";
@@ -283,10 +289,16 @@ function verificar() {
         count++;
     }
 
-    if (document.getElementById("masa2").value <= 0 && document.getElementById("area2").value <= 0) {
+    if (document.getElementById("area").checked && document.getElementById("masa2").value <= 0) {
         estado = false;
-        stringerror = "El valor del último campo debe ser positivo";
+        stringerror = "La masa debe ser un número positivo";
         document.getElementById("masa2").style.border = '4px solid #b21020';
+        count++;
+    }
+
+    if (document.getElementById("masa").checked && document.getElementById("area2").value <= 0) {
+        estado = false;
+        stringerror = "El área debe ser un número positivo";
         document.getElementById("area2").style.border = '4px solid #b21020';
         count++;
     }
@@ -294,7 +306,7 @@ function verificar() {
     if (count > 1)
         stringerror = "Ingrese los valores correctos para calcular";
 
-    if (estado == true)
+    if (estado === true)
         calculos();
     else
         alert("Ups, dato erroneo! " + stringerror);
@@ -321,7 +333,7 @@ function resetear() {
 }
 
 /*
- rellena los inputs con valores aleatorios
+ Rellena los inputs con valores aleatorios
  * @method randomear
  * */
 
@@ -347,7 +359,7 @@ function sacar_error() {
 }
 
 /*
- Elimina el contenido del Canvas
+ Elimina el contenido del canvas
  * @method borracanvas
  * */
 
@@ -360,9 +372,12 @@ function borracanvas() {
 /*
  Modifica el link con los datos ingresados por el usuario
  * @method cargalink
- * @param areas y masas
+ * @param area 1
+ * @param masa 1
+ * @param area 2
+ * @param masa 2
  *
- * NOTA: esta funcion tiene razon de ser al utilizar repetir
+ * NOTA: esta función tiene razón de ser al utilizar repetir
  *
  * */
 
@@ -383,11 +398,11 @@ function repetir() {
     document.getElementById("area1").value = cadena[1];
     document.getElementById("uarea1").value = "m2";
     document.getElementById("masa1").value = cadena[2];
-    document.getElementById("umasa1").value= "kg";
+    document.getElementById("umasa1").value = "kg";
     document.getElementById("area2").value = cadena[3];
     document.getElementById("uarea2").value = "m2";
     document.getElementById("masa2").value = cadena[4];
-    document.getElementById("umasa2").value= "kg";
+    document.getElementById("umasa2").value = "kg";
 
     verificar();
 }
