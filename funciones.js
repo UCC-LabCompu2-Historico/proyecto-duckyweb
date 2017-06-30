@@ -193,8 +193,8 @@ function dibujar(a1, m1, a2, m2, pres) {
         ctx.beginPath();
 
         ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 30 * ppcion) * ratio, 250 * ratio * ppcion, 30 * ratio * ppcion);   //base prensa
-        ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 60 * ppcion + c * ilatina) * ratio, (40 * ppcion + relacion_areas) * ratio, 60 * ppcion - c * ilatina * ratio);       //lado izq
-        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas) * ratio, (alto - yo - 60 * ppcion - c * ilatina) * ratio, 60 * ppcion - relacion_areas * ratio, (60 * ppcion + c * ilatina) * ratio);     //lado der
+        ctx.rect(((ancho / 2) - 125 * ppcion) * ratio, (alto - yo - 60 * ppcion + c * ilatina) * ratio, (40 * ppcion + relacion_areas * ppcion) * ratio, 60 * ppcion - c * ilatina * ratio);       //lado izq
+        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas * ppcion) * ratio, (alto - yo - 60 * ppcion - c * ilatina) * ratio, 60 * ppcion - relacion_areas * ratio * ppcion, (60 * ppcion + c * ilatina) * ratio);     //lado der
         ctx.stroke();
         ctx.fill();
 
@@ -208,9 +208,9 @@ function dibujar(a1, m1, a2, m2, pres) {
         var lado_m1 = (rel_1) * 15 + 25;
         var lado_m2 = (rel_2) * 15 + 25;
 
-        ctx.rect((ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas) / 2 - lado_m1 * ppcion / 2, (alto - yo - 60 * ppcion + c * ilatina) - lado_m1 * ppcion - 60, lado_m1 * ppcion, lado_m1 * ppcion);  //masa 1 izq
+        ctx.rect((ancho / 2) - 125 * ppcion + (40 * ppcion + relacion_areas * ppcion) / 2 - lado_m1 * ppcion / 2, (alto - yo - 60 * ppcion + c * ilatina) - lado_m1 * ppcion - 60, lado_m1 * ppcion, lado_m1 * ppcion);  //masa 1 izq
 
-        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas) + (60 * ppcion - relacion_areas) / 2 - lado_m2 * ppcion / 2, (alto - yo - 60 * ppcion - c * ilatina) - lado_m2 * ppcion - 60, lado_m2 * ppcion, lado_m2 * ppcion);    //masa 2 der
+        ctx.rect(((ancho / 2) + (125 - 60) * ppcion + relacion_areas * ppcion) + (60 * ppcion - relacion_areas * ppcion) / 2 - lado_m2 * ppcion / 2, (alto - yo - 60 * ppcion - c * ilatina) - lado_m2 * ppcion - 60, lado_m2 * ppcion, lado_m2 * ppcion);    //masa 2 der
 
         ctx.stroke();
         ctx.fill();
